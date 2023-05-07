@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Escritorio\\Aseguradora\\Aseguradora.Aplicacion\\Aseguradora.Aplicacion.csproj": {}
+    "D:\\Escritorio\\trabajoUno\\Aseguradora\\Aseguradora.Aplicacion\\Aseguradora.Aplicacion.csproj": {}
   },
   "projects": {
-    "D:\\Escritorio\\Aseguradora\\Aseguradora.Aplicacion\\Aseguradora.Aplicacion.csproj": {
+    "D:\\Escritorio\\trabajoUno\\Aseguradora\\Aseguradora.Aplicacion\\Aseguradora.Aplicacion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Escritorio\\Aseguradora\\Aseguradora.Aplicacion\\Aseguradora.Aplicacion.csproj",
+        "projectUniqueName": "D:\\Escritorio\\trabajoUno\\Aseguradora\\Aseguradora.Aplicacion\\Aseguradora.Aplicacion.csproj",
         "projectName": "Aseguradora.Aplicacion",
-        "projectPath": "D:\\Escritorio\\Aseguradora\\Aseguradora.Aplicacion\\Aseguradora.Aplicacion.csproj",
+        "projectPath": "D:\\Escritorio\\trabajoUno\\Aseguradora\\Aseguradora.Aplicacion\\Aseguradora.Aplicacion.csproj",
         "packagesPath": "C:\\Users\\Valen\\.nuget\\packages\\",
-        "outputPath": "D:\\Escritorio\\Aseguradora\\Aseguradora.Aplicacion\\obj\\",
+        "outputPath": "D:\\Escritorio\\trabajoUno\\Aseguradora\\Aseguradora.Aplicacion\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Valen\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Valen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -53,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

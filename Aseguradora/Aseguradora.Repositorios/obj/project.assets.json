@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net7.0": {
+      "Aseguradora.Aplicacion/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Aseguradora.Aplicacion.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Aseguradora.Aplicacion.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Aseguradora.Aplicacion/1.0.0": {
+      "type": "project",
+      "path": "../Aseguradora.Aplicacion/Aseguradora.Aplicacion.csproj",
+      "msbuildProject": "../Aseguradora.Aplicacion/Aseguradora.Aplicacion.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0": []
+    "net7.0": [
+      "Aseguradora.Aplicacion >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Valen\\.nuget\\packages\\": {}
@@ -13,25 +32,31 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Escritorio\\Aseguradora\\Aseguradora.Repositorios\\Aseguradora.Repositorios.csproj",
+      "projectUniqueName": "D:\\Escritorio\\trabajoUno\\Aseguradora\\Aseguradora.Repositorios\\Aseguradora.Repositorios.csproj",
       "projectName": "Aseguradora.Repositorios",
-      "projectPath": "D:\\Escritorio\\Aseguradora\\Aseguradora.Repositorios\\Aseguradora.Repositorios.csproj",
+      "projectPath": "D:\\Escritorio\\trabajoUno\\Aseguradora\\Aseguradora.Repositorios\\Aseguradora.Repositorios.csproj",
       "packagesPath": "C:\\Users\\Valen\\.nuget\\packages\\",
-      "outputPath": "D:\\Escritorio\\Aseguradora\\Aseguradora.Repositorios\\obj\\",
+      "outputPath": "D:\\Escritorio\\trabajoUno\\Aseguradora\\Aseguradora.Repositorios\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Valen\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Valen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Escritorio\\trabajoUno\\Aseguradora\\Aseguradora.Aplicacion\\Aseguradora.Aplicacion.csproj": {
+              "projectPath": "D:\\Escritorio\\trabajoUno\\Aseguradora\\Aseguradora.Aplicacion\\Aseguradora.Aplicacion.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -59,7 +84,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

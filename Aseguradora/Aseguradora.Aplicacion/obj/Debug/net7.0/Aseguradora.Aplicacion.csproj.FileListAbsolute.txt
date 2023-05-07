@@ -1,0 +1,12 @@
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.csproj.AssemblyReference.cache
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.GeneratedMSBuildEditorConfig.editorconfig
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.AssemblyInfoInputs.cache
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.AssemblyInfo.cs
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.csproj.CoreCompileInputs.cache
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Aplicacion\bin\Debug\net7.0\Aseguradora.Aplicacion.deps.json
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Aplicacion\bin\Debug\net7.0\Aseguradora.Aplicacion.dll
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Aplicacion\bin\Debug\net7.0\Aseguradora.Aplicacion.pdb
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.dll
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\refint\Aseguradora.Aplicacion.dll
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.pdb
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\ref\Aseguradora.Aplicacion.dll

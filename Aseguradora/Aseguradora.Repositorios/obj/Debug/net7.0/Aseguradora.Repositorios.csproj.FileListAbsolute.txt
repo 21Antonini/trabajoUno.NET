@@ -1,0 +1,15 @@
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.csproj.AssemblyReference.cache
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.GeneratedMSBuildEditorConfig.editorconfig
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.AssemblyInfoInputs.cache
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.AssemblyInfo.cs
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.csproj.CoreCompileInputs.cache
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Repositorios\bin\Debug\net7.0\Aseguradora.Repositorios.deps.json
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Repositorios\bin\Debug\net7.0\Aseguradora.Repositorios.dll
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Repositorios\bin\Debug\net7.0\Aseguradora.Repositorios.pdb
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Repositorios\bin\Debug\net7.0\Aseguradora.Aplicacion.dll
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Repositorios\bin\Debug\net7.0\Aseguradora.Aplicacion.pdb
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.csproj.CopyComplete
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.dll
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\refint\Aseguradora.Repositorios.dll
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.pdb
+D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\ref\Aseguradora.Repositorios.dll
