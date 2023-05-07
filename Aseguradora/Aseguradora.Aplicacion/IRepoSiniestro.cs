@@ -2,8 +2,8 @@ namespace Aseguradora.Aplicacion;
 
 public interface IRepoSiniestro
 {
-    //AgregarSiniestro(Siniestro T);
-    //ModificarSiniestro(Siniestro T);
-    //EliminarSiniestro(Siniestro T);
-    //ListarSiniestros();
+    //public void AgregarSiniestro(Siniestro T);
+    //public void ModificarSiniestro(Siniestro T);
+    //public void EliminarSiniestro(Siniestro T);
+    //public void ListarSiniestros();
 }
