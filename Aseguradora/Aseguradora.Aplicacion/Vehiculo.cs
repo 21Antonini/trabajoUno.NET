@@ -1,9 +1,13 @@
 namespace Aseguradora.Aplicacion;
 public class Vehiculo{
-    private String _dominio;
-    private String _marca;
-    private String _fabricacion;
+    private String? _dominio;
+    public String? Dominio { get => _dominio; }
+    private String? _marca;
+    public String? Marca { get => _marca; }
+    private String? _fabricacion;
+    public String? Fabricacion { get => _fabricacion; }
     private int _dueño;
+    public int Dueño { get => _dueño; }
 
     public Vehiculo(String dom,String marca, String año, int id){
         this._dominio=dom;

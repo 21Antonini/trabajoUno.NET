@@ -1,8 +1,8 @@
 namespace Aseguradora.Aplicacion;
 public class Tercero: Persona{
-    private String? Telefono;
-    private String? Aseguradora;
-    private String? Siniestro;
+    private String? Telefono { set; get; }
+    private String? Aseguradora { set; get; }
+    private String? Siniestro { set; get; }
     public Tercero(String _dni, String _nombre, String _apellido):base(_dni,_nombre,_apellido){
         this._id=contTercero++;
     }
