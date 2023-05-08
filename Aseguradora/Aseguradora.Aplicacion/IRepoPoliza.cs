@@ -1,9 +1,8 @@
 namespace Aseguradora.Aplicacion;
-
 public interface IRepoPoliza
 {
-    //AgregarPoliza(Poliza T);
-    //ModificarPoliza(Poliza T);
-    //EliminarPoliza(Poliza T);
-    //ListarPolizas();
+    public void AgregarPoliza(Poliza P);
+    public void ModificarPoliza(Poliza P);
+    public void EliminarPoliza(int Id);
+    public List<Poliza> ListarPolizas();
 }

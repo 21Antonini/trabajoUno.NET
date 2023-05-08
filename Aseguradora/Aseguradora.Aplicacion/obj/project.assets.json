@@ -8,26 +8,24 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Valen\\.nuget\\packages\\": {}
+    "C:\\Users\\ivann\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Escritorio\\trabajoUno\\Aseguradora\\Aseguradora.Aplicacion\\Aseguradora.Aplicacion.csproj",
+      "projectUniqueName": "C:\\Users\\ivann\\OneDrive\\Escritorio\\project .net\\trabajoUno.NET\\Aseguradora\\Aseguradora.Aplicacion\\Aseguradora.Aplicacion.csproj",
       "projectName": "Aseguradora.Aplicacion",
-      "projectPath": "D:\\Escritorio\\trabajoUno\\Aseguradora\\Aseguradora.Aplicacion\\Aseguradora.Aplicacion.csproj",
-      "packagesPath": "C:\\Users\\Valen\\.nuget\\packages\\",
-      "outputPath": "D:\\Escritorio\\trabajoUno\\Aseguradora\\Aseguradora.Aplicacion\\obj\\",
+      "projectPath": "C:\\Users\\ivann\\OneDrive\\Escritorio\\project .net\\trabajoUno.NET\\Aseguradora\\Aseguradora.Aplicacion\\Aseguradora.Aplicacion.csproj",
+      "packagesPath": "C:\\Users\\ivann\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ivann\\OneDrive\\Escritorio\\project .net\\trabajoUno.NET\\Aseguradora\\Aseguradora.Aplicacion\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Valen\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\ivann\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -61,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

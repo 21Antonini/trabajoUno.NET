@@ -1,9 +1,8 @@
 namespace Aseguradora.Aplicacion;
-
 public interface IRepoTercero
 {
-    //AgregarTercero(Tercero T);
-    //ModificarTercero(Tercero T);
-    //EliminarTercero(Tercero T);
-    //ListarTerceros();
+    public void AgregarTercero(Tercero T);
+    public void ModificarTercero(Tercero T);
+    public void EliminarTercero(Tercero T);
+    public List<Tercero> ListarTerceros();
 }

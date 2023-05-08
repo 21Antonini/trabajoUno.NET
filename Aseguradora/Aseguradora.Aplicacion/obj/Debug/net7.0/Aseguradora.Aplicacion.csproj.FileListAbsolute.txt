@@ -10,3 +10,15 @@ D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Ase
 D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\refint\Aseguradora.Aplicacion.dll
 D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.pdb
 D:\Escritorio\trabajoUno\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\ref\Aseguradora.Aplicacion.dll
+C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\bin\Debug\net7.0\Aseguradora.Aplicacion.deps.json
+C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\bin\Debug\net7.0\Aseguradora.Aplicacion.dll
+C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\bin\Debug\net7.0\Aseguradora.Aplicacion.pdb
+C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.csproj.AssemblyReference.cache
+C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.AssemblyInfoInputs.cache
+C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.AssemblyInfo.cs
+C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.csproj.CoreCompileInputs.cache
+C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.dll
+C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\refint\Aseguradora.Aplicacion.dll
+C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.pdb
+C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\ref\Aseguradora.Aplicacion.dll

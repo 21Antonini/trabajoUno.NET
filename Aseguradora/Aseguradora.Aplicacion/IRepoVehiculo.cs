@@ -1,9 +1,8 @@
 namespace Aseguradora.Aplicacion;
-
 public interface IRepoVehiculo
 {
-    //AgregarVehiculo(Vehiculo T);
-    //ModificarVehiculo(Vehiculo T);
-    //EliminarVehiculo(Vehiculo T);
-    //ListarVehiculos();
+    public void AgregarVehiculo(Vehiculo V);
+    public void ModificarVehiculo(Vehiculo V);
+    public void EliminarVehiculo(int Id);
+    public List<Vehiculo> ListarVehiculos();
 }
