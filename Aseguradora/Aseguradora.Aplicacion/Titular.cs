@@ -1,14 +1,16 @@
 namespace Aseguradora.Aplicacion;
 public class Titular: Persona{
+    protected static int ID = 0;
     public List<int> ListaVehiculos {get;set;} = new List<int>();
     public List<Vehiculo> ListaVehiculosInfo {get;set;} = new List<Vehiculo>();
     private String? _Telefono;
     private String? _Direccion;
     private String? _Mail;
     public Titular(String _dni, String _nombre, String _apellido):base(_dni,_nombre,_apellido){
-        this._id=contTitular++;
+        ID++;
     }
     public Titular(String _dni, String _nombre, String _apellido,String Telefono,String Direccion,String Mail):base(_dni,_apellido,_nombre){
+        ID++;
         _Mail=Mail;
         _Direccion=Direccion;
         _Telefono=Telefono;
@@ -16,7 +18,8 @@ public class Titular: Persona{
 
     public override string ToString()
     {
-        String str= base.ToString();
+        String str = $"{ID}: ";
+        str= str + base.ToString();
         if(_Telefono!=null)
             str+=$" Telefono:{_Telefono}";
         if(_Direccion!=null)

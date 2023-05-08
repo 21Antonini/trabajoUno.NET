@@ -1,4 +1,4 @@
-﻿using Aseguradora.Aplicacion;
+﻿/*using Aseguradora.Aplicacion;
 
 namespace Aseguradora.Repositorios;
 public class RepoTitularTXT : IRepoTitular
@@ -95,3 +95,4 @@ public class RepoTitularTXT : IRepoTitular
         }
     }
 }
+*/

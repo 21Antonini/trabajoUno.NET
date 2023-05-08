@@ -1,4 +1,4 @@
-using Aseguradora.Aplicacion;
+/*using Aseguradora.Aplicacion;
 
 namespace Aseguradora.Repositorios;
 public class RepoVehiculoTXT : IRepoVehiculo
@@ -94,4 +94,4 @@ public class RepoVehiculoTXT : IRepoVehiculo
             }
         }
     }
-}
+}*/

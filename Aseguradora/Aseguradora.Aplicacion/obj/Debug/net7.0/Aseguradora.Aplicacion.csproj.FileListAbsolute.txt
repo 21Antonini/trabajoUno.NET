@@ -22,3 +22,15 @@ C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Asegu
 C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\refint\Aseguradora.Aplicacion.dll
 C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.pdb
 C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\ref\Aseguradora.Aplicacion.dll
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\bin\Debug\net7.0\Aseguradora.Aplicacion.deps.json
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\bin\Debug\net7.0\Aseguradora.Aplicacion.dll
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\bin\Debug\net7.0\Aseguradora.Aplicacion.pdb
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.csproj.AssemblyReference.cache
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.AssemblyInfoInputs.cache
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.AssemblyInfo.cs
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.csproj.CoreCompileInputs.cache
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.dll
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\refint\Aseguradora.Aplicacion.dll
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\Aseguradora.Aplicacion.pdb
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Aplicacion\obj\Debug\net7.0\ref\Aseguradora.Aplicacion.dll

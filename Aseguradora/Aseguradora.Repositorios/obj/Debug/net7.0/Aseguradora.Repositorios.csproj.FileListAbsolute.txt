@@ -28,3 +28,18 @@ C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Asegu
 C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\refint\Aseguradora.Repositorios.dll
 C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.pdb
 C:\Users\ivann\OneDrive\Escritorio\project .net\trabajoUno.NET\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\ref\Aseguradora.Repositorios.dll
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.csproj.AssemblyReference.cache
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.AssemblyInfoInputs.cache
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.AssemblyInfo.cs
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.csproj.CoreCompileInputs.cache
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.dll
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\refint\Aseguradora.Repositorios.dll
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.pdb
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Repositorios\bin\Debug\net7.0\Aseguradora.Repositorios.deps.json
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Repositorios\bin\Debug\net7.0\Aseguradora.Repositorios.dll
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Repositorios\bin\Debug\net7.0\Aseguradora.Repositorios.pdb
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Repositorios\bin\Debug\net7.0\Aseguradora.Aplicacion.dll
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Repositorios\bin\Debug\net7.0\Aseguradora.Aplicacion.pdb
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.csproj.CopyComplete
+C:\Users\shein\Desktop\entregaDotnet\trabajoUno.NET\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\ref\Aseguradora.Repositorios.dll
