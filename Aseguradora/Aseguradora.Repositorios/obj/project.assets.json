@@ -27,34 +27,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Valen\\.nuget\\packages\\": {}
+    "C:\\Users\\shein\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Escritorio\\trabajoUno\\Aseguradora\\Aseguradora.Repositorios\\Aseguradora.Repositorios.csproj",
+      "projectUniqueName": "C:\\Users\\shein\\Desktop\\entregaDotnet\\trabajoUno.NET\\Aseguradora\\Aseguradora.Repositorios\\Aseguradora.Repositorios.csproj",
       "projectName": "Aseguradora.Repositorios",
-      "projectPath": "D:\\Escritorio\\trabajoUno\\Aseguradora\\Aseguradora.Repositorios\\Aseguradora.Repositorios.csproj",
-      "packagesPath": "C:\\Users\\Valen\\.nuget\\packages\\",
-      "outputPath": "D:\\Escritorio\\trabajoUno\\Aseguradora\\Aseguradora.Repositorios\\obj\\",
+      "projectPath": "C:\\Users\\shein\\Desktop\\entregaDotnet\\trabajoUno.NET\\Aseguradora\\Aseguradora.Repositorios\\Aseguradora.Repositorios.csproj",
+      "packagesPath": "C:\\Users\\shein\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\shein\\Desktop\\entregaDotnet\\trabajoUno.NET\\Aseguradora\\Aseguradora.Repositorios\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Valen\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\shein\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\Escritorio\\trabajoUno\\Aseguradora\\Aseguradora.Aplicacion\\Aseguradora.Aplicacion.csproj": {
-              "projectPath": "D:\\Escritorio\\trabajoUno\\Aseguradora\\Aseguradora.Aplicacion\\Aseguradora.Aplicacion.csproj"
+            "C:\\Users\\shein\\Desktop\\entregaDotnet\\trabajoUno.NET\\Aseguradora\\Aseguradora.Aplicacion\\Aseguradora.Aplicacion.csproj": {
+              "projectPath": "C:\\Users\\shein\\Desktop\\entregaDotnet\\trabajoUno.NET\\Aseguradora\\Aseguradora.Aplicacion\\Aseguradora.Aplicacion.csproj"
             }
           }
         }
@@ -84,7 +82,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
