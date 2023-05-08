@@ -10,14 +10,14 @@ public class RepoVehiculoTXT : IRepoVehiculo
     }
 
     private string? _path = _obtenerPath("vehiculos.txt");
-    public void AgregarVehiculo(string[] datos)
+    public void AgregarVehiculo(Vehiculo vehiculo)
     {
         using (StreamWriter sw = new StreamWriter(_path, true))
         {
-            sw.WriteLine($"{datos[0]},{datos[1]}");
+            sw.WriteLine($"{vehiculo.Dueño},{vehiculo.Dominio},{vehiculo.Marca},{vehiculo.Fabricacion}");
         }
     }
-    public void ModificarVehiculo(string[] datos)
+    public void ModificarVehiculo(Vehiculo vehiculo)
     {
         List<string[]> vehiculos = new List<string[]>();
         using (StreamReader sr = new StreamReader(_path))
@@ -29,12 +29,12 @@ public class RepoVehiculoTXT : IRepoVehiculo
         }
         using (StreamWriter sw = new StreamWriter(_path))
         {
-            string[] vehiculoModificado = { datos[0], datos[1] };
+            string[] vehiculoModificado = {vehiculo.Dueño.ToString(),vehiculo.Dominio,vehiculo.Marca,vehiculo.Fabricacion};
             Boolean encontre = false;
             int cont = 0;
-            while (!encontre)
+            while (!encontre && cont < vehiculos.Count)
             {
-                if (vehiculos[cont][0].Equals(datos[0]))
+                if (vehiculos[cont][1].Equals(vehiculo.Dominio))
                 {
                     vehiculos[cont] = vehiculoModificado;
                     encontre = true;
@@ -42,13 +42,20 @@ public class RepoVehiculoTXT : IRepoVehiculo
                 cont++;
             }
 
-            foreach (string[] st in vehiculos)
+            if (!encontre)
             {
-                sw.WriteLine(string.Join(",", st));
+                throw new Exception("El Dominio ingresado no corresponde a ninguno registrado.");
+            }
+            else
+            {
+                foreach (string[] st in vehiculos)
+                {
+                    sw.WriteLine(string.Join(",", st));
+                }
             }
         }
     }
-    public void EliminarVehiculo(string[] datos)
+    public void EliminarVehiculo(string dominio)
     {
         List<string[]> vehiculos = new List<string[]>();
         using (StreamReader sr = new StreamReader(_path))
@@ -57,31 +64,39 @@ public class RepoVehiculoTXT : IRepoVehiculo
             {
                 vehiculos.Add(sr.ReadLine().Split(','));
             }
-
         }
         using (StreamWriter sw = new StreamWriter(_path))
         {
-            string[] vehiculoModificado = { '*' + datos[0], datos[1] };
             Boolean encontre = false;
             int cont = 0;
-            while (!encontre)
+            while (!encontre && cont < vehiculos.Count)
             {
-                if (vehiculos[cont][0].Equals(datos[0]))
+                if (vehiculos[cont][1].Equals(dominio))
                 {
+                    string[] vehiculoModificado = vehiculos[cont];
+                    vehiculoModificado[1] = "*" + vehiculoModificado[1];
                     vehiculos[cont] = vehiculoModificado;
                     encontre = true;
                 }
                 cont++;
             }
 
-            foreach (string[] st in vehiculos)
+            if (!encontre)
             {
-                sw.WriteLine(string.Join(",", st));
+                throw new Exception("El dominio ingresado no corresponde a ninguno registrado.");
+            }
+            else
+            {
+                foreach (string[] st in vehiculos)
+                {
+                    sw.WriteLine(string.Join(",", st));
+                }
             }
         }
     }
-    public void ListarVehiculos()
+    public List<Vehiculo> ListarVehiculos()
     {
+        List<Vehiculo> resultado = new List<Vehiculo>();
         using (StreamReader sr = new StreamReader(_path))
         {
             while (!sr.EndOfStream)
@@ -89,9 +104,17 @@ public class RepoVehiculoTXT : IRepoVehiculo
                 string[] st = sr.ReadLine().Split(',');
                 if (!st[0].Contains("*"))
                 {
-                    Console.Write($"Nombre: {st[0]} | Apellido: {st[1]} \n");
+                    /*
+                        st[0] Dueño 
+                        st[1] Dominio
+                        st[2] Marca
+                        st[3] Fabricacion
+                     */
+                    Vehiculo newVehiculo = new Vehiculo(st[1], st[2], st[3], Int32.Parse(st[0]));
+                    resultado.Add(newVehiculo);
                 }
             }
         }
+        return resultado;
     }
 }*/

@@ -4,8 +4,12 @@ public class Titular: Persona{
     public List<int> ListaVehiculos {get;set;} = new List<int>();
     public List<Vehiculo> ListaVehiculosInfo {get;set;} = new List<Vehiculo>();
     private String? _Telefono;
+    public String? Telefono { get => _Telefono; }
     private String? _Direccion;
+    public String? Direccion { get => _Direccion; }
     private String? _Mail;
+    public String? Mail { get => _Mail; }
+
     public Titular(String _dni, String _nombre, String _apellido):base(_dni,_nombre,_apellido){
         ID++;
     }
