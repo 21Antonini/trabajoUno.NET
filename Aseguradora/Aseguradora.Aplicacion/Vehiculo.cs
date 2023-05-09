@@ -1,5 +1,6 @@
 namespace Aseguradora.Aplicacion;
 public class Vehiculo{
+    private int ID {get;set;} = -1;
     private String? _dominio;
     public String? Dominio { get => _dominio; }
     private String? _marca;
@@ -17,7 +18,7 @@ public class Vehiculo{
     }
     public override string ToString()
     {
-        String st= $"Marca: {_marca}, Modelo: {_fabricacion}, Patente: {_dominio}, Titular: {_dueño}";
+        String st= $"ID: {ID}, Marca: {_marca}, Modelo: {_fabricacion}, Patente: {_dominio}, Titular: {_dueño}";
         return st;
     }
 }

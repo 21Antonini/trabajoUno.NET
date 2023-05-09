@@ -1,7 +1,7 @@
 namespace Aseguradora.Aplicacion;
 public class Poliza{
     private int ID {get;set;} = -1;
-    private int IDVehículoAsegurado {get;set;}
+    private int IDVehiculoAsegurado {get;set;}
     private double ValorAsegurado {get;set;}
     private string Franquicia {get; set;}
     private string Cobertura {get; set;}
@@ -9,7 +9,8 @@ public class Poliza{
     private DateTime VigenteHasta {get; set;}
     public Poliza(int idvehiculoAsegurado, double valorAsegurado, string franquicia, string cobertura, DateTime vigenteDesde, DateTime vigenteHasta)
     {
-        IDVehículoAsegurado = idvehiculoAsegurado;
+        ID++;
+        IDVehiculoAsegurado = idvehiculoAsegurado;
         ValorAsegurado = valorAsegurado;
         Franquicia = franquicia;
         Cobertura = cobertura;
