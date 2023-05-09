@@ -5,7 +5,7 @@ public class Titular : Persona {
     private List<Vehiculo> _ListaVehiculos;
     public List<Vehiculo> listaVehiculos { get => _ListaVehiculos; }
     private String? _Telefono;
-    public String? Telefono { get => _Telefono; }
+    private String? Telefono { get => _Telefono; }
     private String? _Direccion;
     public String? Direccion { get => _Direccion; }
     private String? _Mail;
