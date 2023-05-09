@@ -8,6 +8,6 @@ public class EliminarTerceroUseCase
     }
     public void Ejecutar(Tercero T)
     {
-        _repo.EliminarTercero(T);
+        _repo.EliminarTercero(Tercero T);
     }
 }

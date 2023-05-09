@@ -1,5 +1,6 @@
 namespace Aseguradora.Aplicacion;
 public class Tercero: Persona{
+    private int ID {get;set;} = -1;
     private String? Telefono { set; get; }
     private String? Aseguradora { set; get; }
     private String? Siniestro { set; get; }
