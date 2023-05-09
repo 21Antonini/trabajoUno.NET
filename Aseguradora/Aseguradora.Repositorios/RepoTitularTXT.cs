@@ -1,4 +1,4 @@
-﻿/*using Aseguradora.Aplicacion;
+﻿using Aseguradora.Aplicacion;
 
 namespace Aseguradora.Repositorios;
 public class RepoTitularTXT : IRepoTitular
@@ -92,7 +92,7 @@ public class RepoTitularTXT : IRepoTitular
                 if (titulares[cont][0].Equals(idTitular))
                 {
                     string[] titularModificado = titulares[cont];
-                    titularModificado[0] = "*" + titularModificado[1];
+                    titularModificado[0] = "*" + titularModificado[0];
                     titulares[cont] = titularModificado;
                     encontre = true;
                 }
@@ -115,12 +115,19 @@ public class RepoTitularTXT : IRepoTitular
     public List<Titular> ListarTitulares()
     {
         List<Titular> resultado = new List<Titular> ();
+        Titular.ID = 0;
         using (StreamReader sr = new StreamReader(_path))
         {
+            
+            RepoVehiculoTXT repoVehiculoTXT = new RepoVehiculoTXT();
+            List<Vehiculo> vehiculos = repoVehiculoTXT.ListarVehiculos();
             while (!sr.EndOfStream)
             {
                 string[] st = sr.ReadLine().Split(',');
-                if (!st[0].Contains("*"))
+                if (st[0].Contains("*"))
+                {
+                    Titular.ID++;
+                }else
                 {
                     /*
                         st[0] id 
@@ -131,12 +138,38 @@ public class RepoTitularTXT : IRepoTitular
                         st[5] telefono
                         st[6] direccion
                      */
-                    Titular newTitular = new Titular(st[1], st[2], st[3], st[5], st[6], st[4]);
+                    List<Vehiculo> vehiculosDelTitular = new List<Vehiculo> ();
+                    foreach(Vehiculo vehiculo in vehiculos)
+                    {
+                        if (vehiculo.idTitular.Equals(st[0]))
+                        {
+                            vehiculosDelTitular.Add(vehiculo);
+                        }
+                    }
+
+                    Titular newTitular = new Titular(st[1], st[2], st[3], st[5], st[6], st[4], vehiculosDelTitular);
                     resultado.Add(newTitular);
                 }
             }
         }
         return resultado;
     }
+
+    public void listarTitularesConVehiculos()
+    {
+        List<Titular> titulares = ListarTitulares();
+        foreach(Titular titular in titulares)
+        {
+            Console.WriteLine("\n------TITULAR------");
+            Console.WriteLine($"{titular.Nombre} {titular.Apellido} | {titular.DNI} | {titular.Mail} | {titular.Direccion}");
+            Console.WriteLine("\t----VEHICULOS----");
+            foreach(Vehiculo vehiculo in titular.listaVehiculos)
+            {
+                Console.WriteLine($"\t{vehiculo.Dominio} | {vehiculo.Fabricacion} | {vehiculo.Marca}");
+            }
+            Console.WriteLine("------------------\n");
+        }
+    }
+
+   
 }
-*/

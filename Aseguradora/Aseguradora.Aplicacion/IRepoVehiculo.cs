@@ -3,6 +3,6 @@ public interface IRepoVehiculo
 {
     public void AgregarVehiculo(Vehiculo V);
     public void ModificarVehiculo(Vehiculo V);
-    public void EliminarVehiculo(string dominio);
+    public void EliminarVehiculo(int idVehiculo);
     public List<Vehiculo> ListarVehiculos();
 }

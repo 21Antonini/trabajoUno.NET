@@ -1,9 +1,5 @@
 namespace Aseguradora.Aplicacion;
 public abstract class Persona{
-    protected static int contTitular=0;
-    protected static int contTercero=0;
-    protected int _id;
-    public int id { get => _id; }
     protected String _dni;
     public String DNI { get => _dni; }
     protected String _nombre;

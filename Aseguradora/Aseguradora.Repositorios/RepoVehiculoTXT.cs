@@ -1,4 +1,4 @@
-/*using Aseguradora.Aplicacion;
+using Aseguradora.Aplicacion;
 
 namespace Aseguradora.Repositorios;
 public class RepoVehiculoTXT : IRepoVehiculo
@@ -14,7 +14,7 @@ public class RepoVehiculoTXT : IRepoVehiculo
     {
         using (StreamWriter sw = new StreamWriter(_path, true))
         {
-            sw.WriteLine($"{vehiculo.Dueño},{vehiculo.Dominio},{vehiculo.Marca},{vehiculo.Fabricacion}");
+            sw.WriteLine($"{vehiculo.id},{vehiculo.idTitular},{vehiculo.Dominio},{vehiculo.Marca},{vehiculo.Fabricacion}");
         }
     }
     public void ModificarVehiculo(Vehiculo vehiculo)
@@ -29,12 +29,12 @@ public class RepoVehiculoTXT : IRepoVehiculo
         }
         using (StreamWriter sw = new StreamWriter(_path))
         {
-            string[] vehiculoModificado = {vehiculo.Dueño.ToString(),vehiculo.Dominio,vehiculo.Marca,vehiculo.Fabricacion};
+            string[] vehiculoModificado = { vehiculo.id.ToString(), vehiculo.idTitular.ToString(), vehiculo.Dominio, vehiculo.Marca, vehiculo.Fabricacion };
             Boolean encontre = false;
             int cont = 0;
             while (!encontre && cont < vehiculos.Count)
             {
-                if (vehiculos[cont][1].Equals(vehiculo.Dominio))
+                if (vehiculos[cont][1].Equals(vehiculo.id))
                 {
                     vehiculos[cont] = vehiculoModificado;
                     encontre = true;
@@ -44,7 +44,7 @@ public class RepoVehiculoTXT : IRepoVehiculo
 
             if (!encontre)
             {
-                throw new Exception("El Dominio ingresado no corresponde a ninguno registrado.");
+                throw new Exception("El Vehiculo ingresado no corresponde a ninguno registrado.");
             }
             else
             {
@@ -55,7 +55,7 @@ public class RepoVehiculoTXT : IRepoVehiculo
             }
         }
     }
-    public void EliminarVehiculo(string dominio)
+    public void EliminarVehiculo(int idVehiculo)
     {
         List<string[]> vehiculos = new List<string[]>();
         using (StreamReader sr = new StreamReader(_path))
@@ -71,10 +71,10 @@ public class RepoVehiculoTXT : IRepoVehiculo
             int cont = 0;
             while (!encontre && cont < vehiculos.Count)
             {
-                if (vehiculos[cont][1].Equals(dominio))
+                if (vehiculos[cont][0].Equals(idVehiculo))
                 {
                     string[] vehiculoModificado = vehiculos[cont];
-                    vehiculoModificado[1] = "*" + vehiculoModificado[1];
+                    vehiculoModificado[0] = "*" + vehiculoModificado[0];
                     vehiculos[cont] = vehiculoModificado;
                     encontre = true;
                 }
@@ -83,7 +83,7 @@ public class RepoVehiculoTXT : IRepoVehiculo
 
             if (!encontre)
             {
-                throw new Exception("El dominio ingresado no corresponde a ninguno registrado.");
+                throw new Exception("El id ingresado no corresponde a ningun vehiculo registrado.");
             }
             else
             {
@@ -97,24 +97,35 @@ public class RepoVehiculoTXT : IRepoVehiculo
     public List<Vehiculo> ListarVehiculos()
     {
         List<Vehiculo> resultado = new List<Vehiculo>();
+        Titular.ID = 0;
         using (StreamReader sr = new StreamReader(_path))
         {
             while (!sr.EndOfStream)
             {
                 string[] st = sr.ReadLine().Split(',');
-                if (!st[0].Contains("*"))
+                if (st[0].Contains("*"))
+                {
+                    Vehiculo.ID++;
+                }
+                else
                 {
                     /*
-                        st[0] Dueño 
-                        st[1] Dominio
-                        st[2] Marca
-                        st[3] Fabricacion
+                        st[0] Id 
+                        st[1] Titular 
+                        st[2] Dominio
+                        st[3] Marca
+                        st[4] Fabricacion
                      */
-                    Vehiculo newVehiculo = new Vehiculo(st[1], st[2], st[3], Int32.Parse(st[0]));
+                    Vehiculo newVehiculo = new Vehiculo(st[2], st[3], st[4], Int32.Parse(st[1]));
                     resultado.Add(newVehiculo);
                 }
             }
         }
         return resultado;
     }
-}*/
+
+    public List<Vehiculo> vehiculosDelTitular(int id)
+    {
+
+    }
+}

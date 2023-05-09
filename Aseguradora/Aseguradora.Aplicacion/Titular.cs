@@ -1,8 +1,9 @@
 namespace Aseguradora.Aplicacion;
-public class Titular: Persona{
-    protected static int ID = 0;
-    public List<int> ListaVehiculos {get;set;} = new List<int>();
-    public List<Vehiculo> ListaVehiculosInfo {get;set;} = new List<Vehiculo>();
+public class Titular : Persona {
+    public static int ID { get; set; } = 0;
+    private int _id = 0;
+    private List<Vehiculo> _ListaVehiculos;
+    public List<Vehiculo> listaVehiculos { get => _ListaVehiculos; }
     private String? _Telefono;
     public String? Telefono { get => _Telefono; }
     private String? _Direccion;
@@ -10,14 +11,17 @@ public class Titular: Persona{
     private String? _Mail;
     public String? Mail { get => _Mail; }
 
-    public Titular(String _dni, String _nombre, String _apellido):base(_dni,_nombre,_apellido){
+    public Titular(String _dni, String _nombre, String _apellido, List<Vehiculo> vehiculos):base(_dni,_nombre,_apellido){
         ID++;
+        this._ListaVehiculos = vehiculos;
     }
-    public Titular(String _dni, String _nombre, String _apellido,String Telefono,String Direccion,String Mail):base(_dni,_apellido,_nombre){
-        ID++;
+    public Titular(String _dni, String _nombre, String _apellido,String Telefono,String Direccion,String Mail, List<Vehiculo> vehiculos) :base(_dni,_apellido,_nombre){
+        _id = ID;
         _Mail=Mail;
         _Direccion=Direccion;
         _Telefono=Telefono;
+        this._ListaVehiculos = vehiculos;
+        ID++;
     }
 
     public override string ToString()
@@ -30,10 +34,10 @@ public class Titular: Persona{
             str+=$" Direccion: {_Direccion}";
         if(_Mail!=null)
             str+=$" Mail: {_Mail}";
-        if(ListaVehiculos.Count != 0){
+        if(_ListaVehiculos.Count != 0){
             str+=" Vehiculos:";
-            foreach(int i in ListaVehiculos){
-                str+=$"{i},";
+            foreach(Vehiculo vehiculo in _ListaVehiculos){
+                vehiculo.ToString();
             }
         }
         return str;
