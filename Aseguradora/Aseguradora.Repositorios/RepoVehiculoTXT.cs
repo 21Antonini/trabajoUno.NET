@@ -6,7 +6,7 @@ public class RepoVehiculoTXT : IRepoVehiculo
     static private string? _obtenerPath(string archivo)
     {
         DirectoryInfo directory = new DirectoryInfo(Environment.CurrentDirectory);
-        return directory.Parent.Parent.Parent.FullName + "\\" + "datos" + "\\" + archivo;
+        return directory.FullName + "\\" + "datos" + "\\" + archivo;
     }
 
     private string? _path = _obtenerPath("vehiculos.txt");
@@ -122,10 +122,5 @@ public class RepoVehiculoTXT : IRepoVehiculo
             }
         }
         return resultado;
-    }
-
-    public List<Vehiculo> vehiculosDelTitular(int id)
-    {
-
     }
 }

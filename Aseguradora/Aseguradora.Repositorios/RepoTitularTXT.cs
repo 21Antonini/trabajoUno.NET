@@ -6,7 +6,7 @@ public class RepoTitularTXT : IRepoTitular
     static private string? _obtenerPath(string archivo)
     {
         DirectoryInfo directory = new DirectoryInfo(Environment.CurrentDirectory);
-        return directory.Parent.Parent.Parent.FullName + "\\" + "datos" + "\\" + archivo;
+        return directory.FullName + "\\" + "datos" + "\\" + archivo;
     }
 
     private string? _path = _obtenerPath("titulares.txt");
@@ -89,7 +89,7 @@ public class RepoTitularTXT : IRepoTitular
             int cont = 0;
             while (!encontre && cont < titulares.Count)
             {
-                if (titulares[cont][0].Equals(idTitular))
+                if (titulares[cont][0].Equals(idTitular.ToString()))
                 {
                     string[] titularModificado = titulares[cont];
                     titularModificado[0] = "*" + titularModificado[0];
