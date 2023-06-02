@@ -1,3 +1,6 @@
+using Aseguradora.Aplicacion.Entidades;
+using Aseguradora.Aplicacion.Interfaces;
+
 namespace Aseguradora.Aplicacion;
 public class ListarTitularesUseCase
 {

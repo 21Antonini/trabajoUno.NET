@@ -1,4 +1,5 @@
-using Aseguradora.Aplicacion;
+using Aseguradora.Aplicacion.Entidades;
+using Aseguradora.Aplicacion.Interfaces;
 
 namespace Aseguradora.Repositorios;
 public class RepoPolizaTXT : IRepoPoliza
@@ -10,6 +11,37 @@ public class RepoPolizaTXT : IRepoPoliza
     }
 
     private string? _path = _obtenerPath("polizas.txt");
+    private string? _idsPath = _obtenerPath("persistenciaIDs");
+    public int determinarID()
+    {
+        using (StreamReader sr = new StreamReader(_idsPath))
+        {
+            string?[] ids = new string[3];
+            //ids llevara un conteo de la cantidad de ids creada por cada entidad
+            //ids[0] titulares
+            //ids[1] polizas
+            //ids[2] vehiculos
+            ids = sr.ReadLine().Split(',');
+            return Int32.Parse(ids[1]);
+        }
+    }
+    public void actualizarID()
+    {
+        string?[] ids = new string[3];
+        using (StreamReader sr = new StreamReader(_idsPath))
+        {
+            //ids llevara un conteo de la cantidad de ids creada por cada entidad
+            //ids[0] titulares
+            //ids[1] polizas
+            //ids[2] vehiculos
+            ids = sr.ReadLine().Split(',');
+        }
+        using (StreamWriter sw = new StreamWriter(_idsPath, true))
+        {
+            int aux = Int32.Parse(ids[1]);
+            sw.WriteLine($"{ids[0]},{aux++},{ids[2]}");
+        }
+    }
     public void AgregarPoliza(Poliza poliza)
     {
         using (StreamReader sr = new StreamReader(_path))
@@ -22,7 +54,7 @@ public class RepoPolizaTXT : IRepoPoliza
 
             foreach (string[] st in polizas)
             {
-                if (st[0].Equals(poliza.id))
+                if (st[1].Equals(poliza.IDVehiculoAsegurado))
                 {
                     throw new Exception("La poliza ingresada ya existe.");
                 }
@@ -31,7 +63,8 @@ public class RepoPolizaTXT : IRepoPoliza
 
         using (StreamWriter sw = new StreamWriter(_path, true))
         {
-            sw.WriteLine($"{poliza.id},{poliza.IDVehiculoAsegurado},{poliza.Cobertura},{poliza.Franquicia},{poliza.valorAsegurado},{poliza.VigenteDesde.ToString("dd/MM/yyyy")},{poliza.VigenteHasta.ToString("dd/MM/yyyy")}");
+            sw.WriteLine($"{determinarID},{poliza.IDVehiculoAsegurado},{poliza.Cobertura},{poliza.Franquicia},{poliza.valorAsegurado},{poliza.VigenteDesde.ToString("dd/MM/yyyy")},{poliza.VigenteHasta.ToString("dd/MM/yyyy")}");
+            actualizarID();
         }
     }
     public void ModificarPoliza(Poliza poliza)
@@ -46,12 +79,12 @@ public class RepoPolizaTXT : IRepoPoliza
         }
         using (StreamWriter sw = new StreamWriter(_path))
         {
-            string[] polizaModificado = { poliza.id.ToString(), poliza.IDVehiculoAsegurado.ToString(), poliza.Cobertura, poliza.Franquicia,poliza.valorAsegurado.ToString(), poliza.VigenteDesde.ToString("dd/MM/yyyy"), poliza.VigenteHasta.ToString("dd/MM/yyyy") };
+            string[] polizaModificado = { poliza.ID.ToString(), poliza.IDVehiculoAsegurado.ToString(), poliza.Cobertura, poliza.Franquicia,poliza.valorAsegurado.ToString(), poliza.VigenteDesde.ToString("dd/MM/yyyy"), poliza.VigenteHasta.ToString("dd/MM/yyyy") };
             Boolean encontre = false;
             int cont = 0;
             while (!encontre && cont < polizas.Count)
             {
-                if (polizas[cont][0].Equals(poliza.id))
+                if (polizas[cont][0].Equals(poliza.ID))
                 {
                     polizas[cont] = polizaModificado;
                     encontre = true;
@@ -115,18 +148,13 @@ public class RepoPolizaTXT : IRepoPoliza
     public List<Poliza> ListarPolizas()
     {
         List<Poliza> resultado = new List<Poliza>();
-        Poliza.ID = 0;
         using (StreamReader sr = new StreamReader(_path))
         {
 
             while (!sr.EndOfStream)
             {
                 string[] st = sr.ReadLine().Split(',');
-                if (st[0].Contains("*"))
-                {
-                    Poliza.ID++;
-                }
-                else
+                if (!st[0].Contains("*"))
                 {
                     /*
                         st[0] id
@@ -138,6 +166,7 @@ public class RepoPolizaTXT : IRepoPoliza
                         st[6] vigenteHasta
                      */
                     Poliza newPoliza = new Poliza(Int32.Parse(st[1]), Double.Parse(st[4]),st[3],st[2],DateTime.Parse(st[5]),DateTime.Parse(st[6]));
+                    newPoliza.ID = Int32.Parse(st[0]);
                     resultado.Add(newPoliza);
                 }
             }

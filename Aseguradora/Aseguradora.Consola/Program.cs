@@ -1,5 +1,6 @@
 ﻿using Aseguradora.Repositorios;
 using Aseguradora.Aplicacion;
+using Aseguradora.Aplicacion.Entidades;
 
 RepoTitularTXT repoTitular = new RepoTitularTXT();
 AgregarTitularUseCase agregarTitular = new AgregarTitularUseCase(repoTitular);

@@ -1,4 +1,6 @@
-namespace Aseguradora.Aplicacion;
+using Aseguradora.Aplicacion.Entidades;
+
+namespace Aseguradora.Aplicacion.Interfaces;
 public interface IRepoVehiculo
 {
     public void AgregarVehiculo(Vehiculo V);
