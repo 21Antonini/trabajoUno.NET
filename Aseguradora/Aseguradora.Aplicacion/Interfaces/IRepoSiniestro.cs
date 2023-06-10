@@ -1,4 +1,4 @@
-namespace Aseguradora.Aplicacion;
+namespace Aseguradora.Aplicacion.Interfaces;
 
 public interface IRepoSiniestro
 {

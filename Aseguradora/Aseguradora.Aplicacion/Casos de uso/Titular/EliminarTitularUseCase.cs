@@ -1,3 +1,5 @@
+using Aseguradora.Aplicacion.Interfaces;
+
 namespace Aseguradora.Aplicacion;
 public class EliminarTitularUseCase
 {

@@ -1,4 +1,6 @@
-﻿using Aseguradora.Aplicacion;
+﻿using Aseguradora.Aplicacion.Entidades;
+using Aseguradora.Aplicacion.Interfaces;
+using System.ComponentModel;
 
 namespace Aseguradora.Repositorios;
 public class RepoTitularTXT : IRepoTitular
@@ -6,10 +8,43 @@ public class RepoTitularTXT : IRepoTitular
     static private string? _obtenerPath(string archivo)
     {
         DirectoryInfo directory = new DirectoryInfo(Environment.CurrentDirectory);
-        return directory.FullName + "\\" + "datos" + "\\" + archivo;
+        return directory.Parent.Parent.Parent.FullName + "\\" + "datos" + "\\" + archivo;
     }
 
     private string? _path = _obtenerPath("titulares.txt");
+    private string? _idsPath = _obtenerPath("persistenciaIDs.txt");
+    public string determinarID()
+    {
+        using (StreamReader sr = new StreamReader(_idsPath))
+        {
+            string?[] ids = new string[3];
+            //ids llevara un conteo de la cantidad de ids creada por cada entidad
+            //ids[0] titulares
+            //ids[1] polizas
+            //ids[2] vehiculos
+            ids = sr.ReadLine().Split(',');
+            return ids[0];
+        }
+    }
+    public void actualizarID()
+    {
+        string?[] ids = new string[3];
+        using (StreamReader sr = new StreamReader(_idsPath))
+        {
+            //ids llevara un conteo de la cantidad de ids creada por cada entidad
+            //ids[0] titulares
+            //ids[1] polizas
+            //ids[2] vehiculos
+            ids = sr.ReadLine().Split(',');
+        }
+        using (StreamWriter sw = new StreamWriter(_idsPath, false))
+        {
+            int aux = Int32.Parse(ids[0]);
+            aux++;
+            sw.WriteLine($"{aux},{ids[1]},{ids[2]}");
+        }
+    }
+
     public void AgregarTitular(Titular titular)
     {
         using (StreamReader sr = new StreamReader(_path))
@@ -22,7 +57,7 @@ public class RepoTitularTXT : IRepoTitular
 
             foreach (string[] st in titulares)
             {
-                if (st[0].Equals(titular.DNI))
+                if (st[1].Equals(titular.DNI))
                 {
                     throw new Exception("El titular ingresado ya existe.");
                 }
@@ -31,7 +66,8 @@ public class RepoTitularTXT : IRepoTitular
 
         using (StreamWriter sw = new StreamWriter(_path, true))
         {
-            sw.WriteLine($"{titular.id},{titular.DNI},{titular.Nombre},{titular.Apellido},{titular.Mail},{titular.Telefono},{titular.Direccion}");
+            sw.WriteLine($"{determinarID()},{titular.DNI},{titular.Nombre},{titular.Apellido},{titular.Mail},{titular.Telefono},{titular.Direccion}");
+            actualizarID();
         }
     }
     public void ModificarTitular(Titular titular)
@@ -46,13 +82,14 @@ public class RepoTitularTXT : IRepoTitular
         }
         using (StreamWriter sw = new StreamWriter(_path))
         {
-            string[] titularModificado = { titular.id.ToString(), titular.DNI,titular.Nombre,titular.Apellido,titular.Mail,titular.Telefono,titular.Direccion};
+            string[] titularModificado = { "0", titular.DNI,titular.Nombre,titular.Apellido,titular.Mail,titular.Telefono,titular.Direccion};
             Boolean encontre = false;
             int cont = 0;
             while (!encontre && cont < titulares.Count)
             {
                 if (titulares[cont][1].Equals(titular.DNI))
                 {
+                    titularModificado[0] = titulares[cont][0];
                     titulares[cont] = titularModificado;
                     encontre = true;
                 }
@@ -115,19 +152,12 @@ public class RepoTitularTXT : IRepoTitular
     public List<Titular> ListarTitulares()
     {
         List<Titular> resultado = new List<Titular> ();
-        Titular.ID = 0;
         using (StreamReader sr = new StreamReader(_path))
         {
-            
-            RepoVehiculoTXT repoVehiculoTXT = new RepoVehiculoTXT();
-            List<Vehiculo> vehiculos = repoVehiculoTXT.ListarVehiculos();
             while (!sr.EndOfStream)
             {
                 string[] st = sr.ReadLine().Split(',');
-                if (st[0].Contains("*"))
-                {
-                    Titular.ID++;
-                }else
+                if (!st[0].Contains("*"))
                 {
                     /*
                         st[0] id 
@@ -138,16 +168,8 @@ public class RepoTitularTXT : IRepoTitular
                         st[5] telefono
                         st[6] direccion
                      */
-                    List<Vehiculo> vehiculosDelTitular = new List<Vehiculo> ();
-                    foreach(Vehiculo vehiculo in vehiculos)
-                    {
-                        if (vehiculo.idTitular.Equals(st[0]))
-                        {
-                            vehiculosDelTitular.Add(vehiculo);
-                        }
-                    }
-
-                    Titular newTitular = new Titular(st[1], st[2], st[3], st[5], st[6], st[4], vehiculosDelTitular);
+                    Titular newTitular = new Titular(st[1], st[2], st[3], st[5], st[6], st[4]);
+                    newTitular.ID = Int32.Parse(st[0]);
                     resultado.Add(newTitular);
                 }
             }
@@ -155,20 +177,22 @@ public class RepoTitularTXT : IRepoTitular
         return resultado;
     }
 
-    public void listarTitularesConVehiculos()
+    public List<Titular> ListarTitularesConVehiculos(List<Vehiculo> vehiculos)
     {
+        List<Titular> titularesConVehiculos = new List<Titular>();
         List<Titular> titulares = ListarTitulares();
         foreach(Titular titular in titulares)
         {
-            Console.WriteLine("\n------TITULAR------");
-            Console.WriteLine($"{titular.Nombre} {titular.Apellido} | {titular.DNI} | {titular.Mail} | {titular.Direccion}");
-            Console.WriteLine("\t----VEHICULOS----");
-            foreach(Vehiculo vehiculo in titular.listaVehiculos)
+            foreach (Vehiculo vehiculo in vehiculos)
             {
-                Console.WriteLine($"\t{vehiculo.Dominio} | {vehiculo.Fabricacion} | {vehiculo.Marca}");
+                if (vehiculo.idTitular == titular.ID)
+                {
+                    titular.listaVehiculos.Add(vehiculo);
+                }
             }
-            Console.WriteLine("------------------\n");
+            titularesConVehiculos.Add(titular);
         }
+        return titularesConVehiculos;
     }
 
    

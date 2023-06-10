@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aseguradora.Consola", "Aseg
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aseguradora.Repositorios", "Aseguradora.Repositorios\Aseguradora.Repositorios.csproj", "{944D955A-6B23-4B1F-BC0B-39386AF8E14B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aseguradora.UI", "Aseguradora.UI\Aseguradora.UI.csproj", "{185B6060-8460-4D8C-BCC9-F5D7A76ECB36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{944D955A-6B23-4B1F-BC0B-39386AF8E14B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{944D955A-6B23-4B1F-BC0B-39386AF8E14B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{944D955A-6B23-4B1F-BC0B-39386AF8E14B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{185B6060-8460-4D8C-BCC9-F5D7A76ECB36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{185B6060-8460-4D8C-BCC9-F5D7A76ECB36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{185B6060-8460-4D8C-BCC9-F5D7A76ECB36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{185B6060-8460-4D8C-BCC9-F5D7A76ECB36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

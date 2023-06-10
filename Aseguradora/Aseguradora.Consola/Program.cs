@@ -1,5 +1,6 @@
 ﻿using Aseguradora.Repositorios;
 using Aseguradora.Aplicacion;
+using Aseguradora.Aplicacion.Entidades;
 
 RepoTitularTXT repoTitular = new RepoTitularTXT();
 AgregarTitularUseCase agregarTitular = new AgregarTitularUseCase(repoTitular);
@@ -13,9 +14,9 @@ Direccion = "13 nro. 546",
 Telefono = "221-456456",
 Mail = "joseGarcia@gmail.com"
 };
-Console.WriteLine($"Id del titular recién instanciado: {titular.id}");
 
 repoTitular.AgregarTitular(titular);
+Console.WriteLine($"Id del titular recién instanciado: {titular.ID}");
 
 Console.WriteLine(titular.ToString());
 repoTitular.AgregarTitular(new Titular("20654987", "Rodriguez", "Ana"));
@@ -30,8 +31,8 @@ foreach (Titular t in lista)
 Console.WriteLine(t);
 }
 
-//Console.WriteLine("Eliminando al titular con id 1");
-//eliminarTitular.Ejecutar(1);
+Console.WriteLine("Eliminando al titular con id 1");
+eliminarTitular.Ejecutar(1);
 
 
 Console.WriteLine("Listando todos los titulares de vehículos");
@@ -49,12 +50,12 @@ ListarVehiculosUseCase listarVehiculos = new ListarVehiculosUseCase(repoVehiculo
 ModificarVehiculoUseCase modificarVehiculo = new ModificarVehiculoUseCase(repoVehiculo);
 EliminarVehiculoUseCase eliminarVehiculo = new EliminarVehiculoUseCase(repoVehiculo);
 
-Vehiculo V = new Vehiculo("abc123","ford","2012",1);
+Vehiculo V = new Vehiculo("abc123","ford","2012","1");
 repoVehiculo.AgregarVehiculo(V);
 
-repoVehiculo.AgregarVehiculo(new Vehiculo("abc123","ford","2012",1));
-repoVehiculo.AgregarVehiculo(new Vehiculo("abc123","ford","2012",2));
-repoVehiculo.AgregarVehiculo(new Vehiculo("abc123","ford","2012",3));
+repoVehiculo.AgregarVehiculo(new Vehiculo("abc126","ford","2012","1"));
+repoVehiculo.AgregarVehiculo(new Vehiculo("abc124","ford","2012","2"));
+repoVehiculo.AgregarVehiculo(new Vehiculo("abc125","ford","2012","3"));
 
 List<Vehiculo> listav = new List<Vehiculo>();
 
@@ -92,3 +93,13 @@ Console.WriteLine(p);
 }
 
 Console.ReadKey();
+
+
+ListarTitularesConSusVehiculosUseCase listarTV = new ListarTitularesConSusVehiculosUseCase(repoTitular, repoVehiculo);
+List<Titular> titularV = new List<Titular>();
+titularV = listarTV.Ejecutar();
+
+foreach(Titular t in titularV)
+{
+    Console.WriteLine(t);
+}

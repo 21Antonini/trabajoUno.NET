@@ -1,4 +1,6 @@
-namespace Aseguradora.Aplicacion;
+using Aseguradora.Aplicacion.Entidades;
+
+namespace Aseguradora.Aplicacion.Interfaces;
 public interface IRepoTercero
 {
     public void AgregarTercero(Tercero T);
