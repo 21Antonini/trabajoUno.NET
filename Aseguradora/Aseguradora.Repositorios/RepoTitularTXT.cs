@@ -8,12 +8,12 @@ public class RepoTitularTXT : IRepoTitular
     static private string? _obtenerPath(string archivo)
     {
         DirectoryInfo directory = new DirectoryInfo(Environment.CurrentDirectory);
-        return directory.FullName + "\\" + "datos" + "\\" + archivo;
+        return directory.Parent.Parent.Parent.FullName + "\\" + "datos" + "\\" + archivo;
     }
 
     private string? _path = _obtenerPath("titulares.txt");
-    private string? _idsPath = _obtenerPath("persistenciaIDs");
-    public int determinarID()
+    private string? _idsPath = _obtenerPath("persistenciaIDs.txt");
+    public string determinarID()
     {
         using (StreamReader sr = new StreamReader(_idsPath))
         {
@@ -23,7 +23,7 @@ public class RepoTitularTXT : IRepoTitular
             //ids[1] polizas
             //ids[2] vehiculos
             ids = sr.ReadLine().Split(',');
-            return Int32.Parse(ids[0]);
+            return ids[0];
         }
     }
     public void actualizarID()
@@ -37,10 +37,11 @@ public class RepoTitularTXT : IRepoTitular
             //ids[2] vehiculos
             ids = sr.ReadLine().Split(',');
         }
-        using (StreamWriter sw = new StreamWriter(_idsPath, true))
+        using (StreamWriter sw = new StreamWriter(_idsPath, false))
         {
             int aux = Int32.Parse(ids[0]);
-            sw.WriteLine($"{aux++},{ids[1]},{ids[2]}");
+            aux++;
+            sw.WriteLine($"{aux},{ids[1]},{ids[2]}");
         }
     }
 
@@ -56,7 +57,7 @@ public class RepoTitularTXT : IRepoTitular
 
             foreach (string[] st in titulares)
             {
-                if (st[0].Equals(titular.DNI))
+                if (st[1].Equals(titular.DNI))
                 {
                     throw new Exception("El titular ingresado ya existe.");
                 }
@@ -65,7 +66,7 @@ public class RepoTitularTXT : IRepoTitular
 
         using (StreamWriter sw = new StreamWriter(_path, true))
         {
-            sw.WriteLine($"{determinarID},{titular.DNI},{titular.Nombre},{titular.Apellido},{titular.Mail},{titular.Telefono},{titular.Direccion}");
+            sw.WriteLine($"{determinarID()},{titular.DNI},{titular.Nombre},{titular.Apellido},{titular.Mail},{titular.Telefono},{titular.Direccion}");
             actualizarID();
         }
     }

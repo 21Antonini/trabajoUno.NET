@@ -1,7 +1,7 @@
 namespace Aseguradora.Aplicacion.Entidades;
 public class Titular : Persona
 {
-    public List<Vehiculo> listaVehiculos { get; set; }
+    public List<Vehiculo> listaVehiculos { get; set; } = new List<Vehiculo>();
     public string? Telefono { get; set; }
     public string? Direccion { get; set; }
     public string? Mail { get; set ; }
@@ -27,7 +27,7 @@ public class Titular : Persona
             str += $" Direccion: {Direccion}";
         if (Mail != null)
             str += $" Mail: {Mail}";
-        if (listaVehiculos.Count != 0)
+        if (listaVehiculos != null)
         {
             str += " Vehiculos:";
             foreach (Vehiculo vehiculo in listaVehiculos)

@@ -7,12 +7,12 @@ public class RepoVehiculoTXT : IRepoVehiculo
     static private string? _obtenerPath(string archivo)
     {
         DirectoryInfo directory = new DirectoryInfo(Environment.CurrentDirectory);
-        return directory.FullName + "\\" + "datos" + "\\" + archivo;
+        return directory.Parent.Parent.Parent.FullName + "\\" + "datos" + "\\" + archivo;
     }
 
     private string? _path = _obtenerPath("vehiculos.txt");
-    private string? _idsPath = _obtenerPath("persistenciaIDs");
-    public int determinarID()
+    private string? _idsPath = _obtenerPath("persistenciaIDs.txt");
+    public string determinarID()
     {
         using (StreamReader sr = new StreamReader(_idsPath))
         {
@@ -22,7 +22,7 @@ public class RepoVehiculoTXT : IRepoVehiculo
             //ids[1] polizas
             //ids[2] vehiculos
             ids = sr.ReadLine().Split(',');
-            return Int32.Parse(ids[2]);
+            return ids[2];
         }
     }
     public void actualizarID()
@@ -36,10 +36,11 @@ public class RepoVehiculoTXT : IRepoVehiculo
             //ids[2] vehiculos
             ids = sr.ReadLine().Split(',');
         }
-        using (StreamWriter sw = new StreamWriter(_idsPath, true))
+        using (StreamWriter sw = new StreamWriter(_idsPath, false))
         {
             int aux = Int32.Parse(ids[2]);
-            sw.WriteLine($"{ids[0]},{ids[1]},{aux++}");
+            aux++;
+            sw.WriteLine($"{ids[0]},{ids[1]},{aux}");
         }
     }
     public void AgregarVehiculo(Vehiculo vehiculo)
@@ -63,7 +64,7 @@ public class RepoVehiculoTXT : IRepoVehiculo
 
         using (StreamWriter sw = new StreamWriter(_path, true))
         {
-            sw.WriteLine($"{determinarID},{vehiculo.idTitular},{vehiculo.Dominio},{vehiculo.Marca},{vehiculo.Fabricacion}");
+            sw.WriteLine($"{determinarID()},{vehiculo.idTitular},{vehiculo.Dominio},{vehiculo.Marca},{vehiculo.Fabricacion}");
             actualizarID();
         }
     }

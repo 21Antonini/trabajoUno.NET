@@ -7,12 +7,12 @@ public class RepoPolizaTXT : IRepoPoliza
     static private string? _obtenerPath(string archivo)
     {
         DirectoryInfo directory = new DirectoryInfo(Environment.CurrentDirectory);
-        return directory.FullName + "\\" + "datos" + "\\" + archivo;
+        return directory.Parent.Parent.Parent.FullName + "\\" + "datos" + "\\" + archivo;
     }
 
     private string? _path = _obtenerPath("polizas.txt");
-    private string? _idsPath = _obtenerPath("persistenciaIDs");
-    public int determinarID()
+    private string? _idsPath = _obtenerPath("persistenciaIDs.txt");
+    public string determinarID()
     {
         using (StreamReader sr = new StreamReader(_idsPath))
         {
@@ -22,7 +22,7 @@ public class RepoPolizaTXT : IRepoPoliza
             //ids[1] polizas
             //ids[2] vehiculos
             ids = sr.ReadLine().Split(',');
-            return Int32.Parse(ids[1]);
+            return ids[1];
         }
     }
     public void actualizarID()
@@ -36,9 +36,10 @@ public class RepoPolizaTXT : IRepoPoliza
             //ids[2] vehiculos
             ids = sr.ReadLine().Split(',');
         }
-        using (StreamWriter sw = new StreamWriter(_idsPath, true))
+        using (StreamWriter sw = new StreamWriter(_idsPath, false))
         {
             int aux = Int32.Parse(ids[1]);
+            aux++;
             sw.WriteLine($"{ids[0]},{aux++},{ids[2]}");
         }
     }
