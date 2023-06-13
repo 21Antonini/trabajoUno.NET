@@ -16,31 +16,35 @@ public class RepoPolizaTXT : IRepoPoliza
     {
         using (StreamReader sr = new StreamReader(_idsPath))
         {
-            string?[] ids = new string[3];
+            string?[] ids = new string[4];
             //ids llevara un conteo de la cantidad de ids creada por cada entidad
             //ids[0] titulares
             //ids[1] polizas
             //ids[2] vehiculos
+            //ids[3] siniestros
+            //ids[4] terceros
             ids = sr.ReadLine().Split(',');
             return ids[1];
         }
     }
     public void actualizarID()
     {
-        string?[] ids = new string[3];
+        string?[] ids = new string[4];
         using (StreamReader sr = new StreamReader(_idsPath))
         {
             //ids llevara un conteo de la cantidad de ids creada por cada entidad
             //ids[0] titulares
             //ids[1] polizas
             //ids[2] vehiculos
+            //ids[3] siniestros
+            //ids[4] terceros
             ids = sr.ReadLine().Split(',');
         }
         using (StreamWriter sw = new StreamWriter(_idsPath, false))
         {
             int aux = Int32.Parse(ids[1]);
             aux++;
-            sw.WriteLine($"{ids[0]},{aux++},{ids[2]}");
+            sw.WriteLine($"{ids[0]},{aux},{ids[2]},{ids[3]},{ids[4]}");
         }
     }
     public void AgregarPoliza(Poliza poliza)

@@ -5,8 +5,10 @@ public class Tercero : Persona
     public string? Telefono { set; get; }
     public string? Aseguradora { set; get; }
     public string? Siniestro { set; get; }
-    public Tercero(string _dni, string _nombre, string _apellido) : base(_dni, _nombre, _apellido)
+    public Tercero(string dni, string nombre, string apellido, string aseguradora, string telefono, string siniestro) : base(dni, nombre, apellido)
     {
-        //PARA LA PRÓXIMA ENTREGA
+        Telefono = telefono;
+        Aseguradora = apellido;
+        Siniestro = siniestro;
     }
 }
