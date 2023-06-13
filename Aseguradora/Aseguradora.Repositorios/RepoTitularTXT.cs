@@ -17,31 +17,35 @@ public class RepoTitularTXT : IRepoTitular
     {
         using (StreamReader sr = new StreamReader(_idsPath))
         {
-            string?[] ids = new string[3];
+            string?[] ids = new string[4];
             //ids llevara un conteo de la cantidad de ids creada por cada entidad
             //ids[0] titulares
             //ids[1] polizas
             //ids[2] vehiculos
+            //ids[3] siniestros
+            //ids[4] terceros
             ids = sr.ReadLine().Split(',');
             return ids[0];
         }
     }
     public void actualizarID()
     {
-        string?[] ids = new string[3];
+        string?[] ids = new string[4];
         using (StreamReader sr = new StreamReader(_idsPath))
         {
             //ids llevara un conteo de la cantidad de ids creada por cada entidad
             //ids[0] titulares
             //ids[1] polizas
             //ids[2] vehiculos
+            //ids[3] siniestros
+            //ids[4] terceros
             ids = sr.ReadLine().Split(',');
         }
         using (StreamWriter sw = new StreamWriter(_idsPath, false))
         {
             int aux = Int32.Parse(ids[0]);
             aux++;
-            sw.WriteLine($"{aux},{ids[1]},{ids[2]}");
+            sw.WriteLine($"{aux},{ids[1]},{ids[2]},{ids[3]},{ids[4]}");
         }
     }
 
@@ -149,6 +153,41 @@ public class RepoTitularTXT : IRepoTitular
             }
         }
     }
+    
+    public Titular ObtenerTitular(int id)
+    {
+        using (StreamReader sr = new StreamReader(_path))
+        {
+            Titular newTitular = new Titular("-1", "default", "default");
+            Boolean encontre = false;
+            while (!sr.EndOfStream && !encontre)
+            {
+                string[] st = sr.ReadLine().Split(',');
+                if (!st[0].Contains("*") && st[0].Equals(id.ToString()))
+                {
+                    /*
+                        st[0] id 
+                        st[1] dni
+                        st[2] nombre
+                        st[3] apellido
+                        st[4] mail
+                        st[5] telefono
+                        st[6] direccion
+                     */
+                    newTitular = new Titular(st[1], st[2], st[3], st[5], st[6], st[4]);
+                    newTitular.ID = Int32.Parse(st[0]);
+                    encontre = true;
+                }
+            }
+
+            if(!encontre)
+            {
+                throw new Exception("Titular no encontrado.");
+            }
+            return newTitular;
+        }
+    }
+
     public List<Titular> ListarTitulares()
     {
         List<Titular> resultado = new List<Titular> ();
