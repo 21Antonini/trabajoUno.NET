@@ -1,4 +1,0 @@
-0,33123456,García,Juan,joseGarcia@gmail.com,221-456456,13 nro. 546
-*1,20654987,Rodriguez,Ana,,,
-2,31456444,Alconada,Fermín,,,
-3,12345654,Perez,Cecilia,,,
