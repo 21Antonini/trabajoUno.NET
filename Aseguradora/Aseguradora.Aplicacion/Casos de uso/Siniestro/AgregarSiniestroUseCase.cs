@@ -4,13 +4,16 @@ using Aseguradora.Aplicacion.Interfaces;
 namespace Aseguradora.Aplicacion;
 public class AgregarSiniestroUseCase
 {
-    IRepoSiniestro _repo;
-    public AgregarSiniestroUseCase(IRepoSiniestro repo)
+    IRepoSiniestro _repoSiniestro;
+    IRepoPoliza _repoPoliza;
+    public AgregarSiniestroUseCase(IRepoSiniestro repoSiniestro, IRepoPoliza repoPoliza)
     {
-        _repo = repo;
+        _repoSiniestro = repoSiniestro;
+        _repoPoliza = repoPoliza;
+
     }
     public void Ejecutar(Siniestro S)
     {
-        _repo.AgregarSiniestro(S);
+        _repoSiniestro.AgregarSiniestro(S, _repoPoliza.ListarPolizas());
     }
 }
