@@ -1,0 +1,53 @@
+@page "/titular/{ID:int?}"
+@inject NavigationManager Navegador;
+@inject AgregarTitularUseCase AgregarTitularUseCase
+@inject ModificarTitularUseCase ModificarTitularUseCase
+
+<input placeholder="Nombre" @bind="_titular.Nombre" class="form-control">
+<input placeholder="Apellido" @bind="_titular.Apellido" class="form-control">
+<input placeholder="DNI" @bind="_titular.DNI" class="form-control">
+<button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
+
+@if (_esNuevoTitular)
+{
+   <h3>Agregando un nuevo Titular</h3>
+}
+else
+{
+   <h3>Modificando al Titular "@_titular.Nombre"</h3>
+} 
+
+<input placeholder="Nombre" @bind="_titular.Nombre" class="form-control">
+<input placeholder="Apellido" @bind="_titular.Apellido" class="form-control">
+<button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
+
+@code {
+    Titular _titular = new Titular();
+    [Parameter] public int? ID { get; set; }
+    bool _esNuevo = true;
+    protected override void OnParametersSet()
+    {
+        if (ID != null)
+        {
+            var t_hallado = ObtenerTitularUseCase.Ejecutar(ID.Value);
+            if (t_hallado != null)
+            {
+                _titular = t_hallado;
+                _esNuevo = false;
+            }
+        }
+    }
+   void Aceptar()
+   {
+       if (_esNuevo)
+       {
+           AgregarTitularUseCase.Ejecutar(_titular);
+       }
+       else
+       {
+           ModificarTitularUseCase.Ejecutar(_titular);
+       }
+       _titular = new Titular();
+       Navegador.NavigateTo("listadotitulares");
+   }  
+}

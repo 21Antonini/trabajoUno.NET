@@ -1,0 +1,66 @@
+@page "/listadotitulares"
+@inject ListarTitularesUseCase ListarTitularesUseCase
+@inject EliminarTitularesUseCase EliminarTitularesUseCase
+@inject NavigationManager Navegador
+
+<DialogoConfirmacion @ref="dialogo" OnConfirmado="Eliminar"/>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+            <th>DNI</th>
+            <th>ACCIÓN</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ti in _lista)
+        {
+            <tr>
+                <td>@ti.Id</td>
+                <td>@ti.Nombre</td>
+                <td>@ti.Apellido</td>
+                <td>@ti.DNI</td>
+                <td>
+                    <button class="btn btn-primary">
+                        <span class="oi oi-pencil"></span>
+                    </button>
+                    <button class="btn btn-danger" @onclick="()=>ConfirmarEliminacion(cli)">
+                        <span class="oi oi-trash"></span>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@code {
+    List<Titular> _lista = new List<Titular>();
+    protected override void OnInitialized()
+    {
+        _lista = ListarTitularesUseCase.Ejecutar();
+    }
+
+    DialogoConfirmacion dialogo = null!;
+    Titular? _titularParaEliminar = null;
+    private void ConfirmarEliminacion(Titular t)
+    {
+        _titularParaEliminar = t;
+        dialogo.Mensaje = $"¿Desea eliminar al titular {t.Nombre} {t.Apellido} {t.DNI}?";
+        dialogo.Mostrar();
+    }   //Dialogo de confirmacion para eliminar titulares
+    private void Eliminar()
+    {
+        if (_titularParaEliminar != null)
+        {
+            EliminarTitularUseCase.Ejecutar(_titularParaEliminar.Id);
+            _lista = ListarTitularesUseCase.Ejecutar(); 
+        }
+    }
+    void ModificarTitular(Titular t)
+    {
+        Navegador.NavigateTo($"titular/{t.ID}");
+    }
+}

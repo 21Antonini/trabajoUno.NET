@@ -1,0 +1,68 @@
+@page "/listadovehiculos"
+@inject ListarVehiculosUseCase ListarVehiculosUseCase
+@inject EliminarVehiculosUseCase EliminarVehiculosUseCase
+@inject NavigationManager Navegador
+
+<DialogoConfirmacion @ref="dialogo" OnConfirmado="Eliminar"/>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>DOMINIO</th>
+            <th>MARCA</th>
+            <th>FABRICACION</th>
+            <th>IDTITULAR</th>
+            <th>ACCIÓN</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var v in _lista)
+        {
+            <tr>
+                <td>@v.ID</td>
+                <td>@v.Dominio</td>
+                <td>@v.Marca</td>
+                <td>@v.Fabricacion</td>
+                <td>@v.IdTitular</td>
+                <td>
+                    <button class="btn btn-primary">
+                        <span class="oi oi-pencil"></span>
+                    </button>
+                    <button class="btn btn-danger" @onclick="()=>ConfirmarEliminacion(cli)">
+                        <span class="oi oi-trash"></span>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@code {
+    List<Vehiculo> _lista = new List<Vehiculo>();
+    protected override void OnInitialized()
+    {
+        _lista = ListarVehiculosUseCase.Ejecutar();
+    }
+
+    DialogoConfirmacion dialogo = null!;
+    Vehiculo? _vehiculoParaEliminar = null;
+    private void ConfirmarEliminacion(Vehiculo v)
+    {
+        _vehiculoParaEliminar = t;
+        dialogo.Mensaje = $"¿Desea eliminar al vehiculo {v.Marca} {v.Fabricacion} {v.Dominio}?";
+        dialogo.Mostrar();
+    }   //Dialogo de confirmacion para eliminar vehiculos
+    private void Eliminar()
+    {
+        if (_vehiculoParaEliminar != null)
+        {
+            EliminarVehiculoUseCase.Ejecutar(_vehiculoParaEliminar.ID);
+            _lista = ListarVehiculosUseCase.Ejecutar(); 
+        }
+    }
+    void ModificarVehiculo(Vehiculo v)
+    {
+        Navegador.NavigateTo($"vehiculo/{v.ID}");
+    }
+}

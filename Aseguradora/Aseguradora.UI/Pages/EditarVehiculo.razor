@@ -1,0 +1,53 @@
+@page "/vehiculo/{ID:int?}"
+@inject NavigationManager Navegador;
+@inject AgregarVehiculoUseCase AgregarVehiculoUseCase
+@inject ModificarVehiculoUseCase ModificarVehiculoUseCase
+
+<input placeholder="Marca" @bind="_titular.Marca" class="form-control">
+<input placeholder="Modelo" @bind="_titular.Fabricacion" class="form-control">
+<input placeholder="Dominio" @bind="_titular.Dominio" class="form-control">
+<button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
+
+@if (_esNuevoVehiculo)
+{
+   <h3>Agregando un nuevo Vehiculo</h3>
+}
+else
+{
+   <h3>Modificando al Vehiculo "@_vehiculo.Nombre"</h3>
+} 
+
+<input placeholder="Marca" @bind="_vehiculo.Marca" class="form-control">
+<input placeholder="Modelo" @bind="_cliente.Fabricacion" class="form-control">
+<button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
+
+@code {
+    Vehiculo _vehiculo = new Vehiculo();
+    [Parameter] public int? ID { get; set; }
+    bool _esNuevo = true;
+    protected override void OnParametersSet()
+    {
+        if (ID != null)
+        {
+            var v_hallado = ObtenerVehiculoUseCase.Ejecutar(ID.Value);
+            if (v_hallado != null)
+            {
+                _vehiculo = v_hallado;
+                _esNuevo = false;
+            }
+        }
+    }
+   void Aceptar()
+   {
+       if (_esNuevo)
+       {
+           AgregarVehiculoUseCase.Ejecutar(_titular);
+       }
+       else
+       {
+           ModificarVehiculoUseCase.Ejecutar(_titular);
+       }
+       _vehiculo = new Vehiculo();
+       Navegador.NavigateTo("listadovehiculos");
+   }  
+}
