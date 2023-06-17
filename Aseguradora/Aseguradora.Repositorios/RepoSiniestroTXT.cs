@@ -53,7 +53,7 @@ namespace Aseguradora.Repositorios
                 sw.WriteLine($"{ids[0]},{ids[1]},{ids[2]},{aux},{ids[4]}");
             }
         }
-        public void AgregarSiniestro(Siniestro siniestro)
+        public void AgregarSiniestro(Siniestro siniestro, List<Poliza> listaPolizas)
         {
             using (StreamReader sr = new StreamReader(_path))
             {
@@ -74,8 +74,27 @@ namespace Aseguradora.Repositorios
 
             using (StreamWriter sw = new StreamWriter(_path, true))
             {
-                sw.WriteLine($"{determinarID},{siniestro.Poliza},{siniestro.FechaCargaSistema},{siniestro.FechaOcurrencia},{siniestro.DireccionDelHecho},{siniestro.DescripcionDelHecho}");
-                actualizarID();
+
+                Boolean encontre = false; int i = 0;
+                while(!encontre && i < listaPolizas.Count)
+                {
+                    Poliza p = listaPolizas[i];
+                    if(p.ID.Equals(siniestro.idPoliza))
+                    {
+                        if((siniestro.FechaOcurrencia >= p.VigenteDesde) && (siniestro.FechaOcurrencia >= p.VigenteHasta))
+                        {
+                            sw.WriteLine($"{determinarID},{siniestro.idPoliza},{siniestro.FechaCargaSistema},{siniestro.FechaOcurrencia},{siniestro.DireccionDelHecho},{siniestro.DescripcionDelHecho}, {siniestro.idTercero}");
+                            actualizarID();
+                            encontre = true;
+                        }
+                    }
+                    i++;
+                }
+
+                if(!encontre)
+                {
+                    throw new Exception("El siniestro esta fuera de la fecha de cobertura de la poliza.");
+                }
             }
         }
         public void ModificarSiniestro(Siniestro siniestro)
@@ -90,7 +109,7 @@ namespace Aseguradora.Repositorios
             }
             using (StreamWriter sw = new StreamWriter(_path))
             {
-                string[] siniestroModificado = { siniestro.ID.ToString(), siniestro.Poliza, siniestro.FechaCargaSistema.ToString(), siniestro.FechaOcurrencia.ToString(), siniestro.DireccionDelHecho, siniestro.DescripcionDelHecho };
+                string[] siniestroModificado = { siniestro.ID.ToString(), siniestro.idPoliza, siniestro.FechaCargaSistema.ToString(), siniestro.FechaOcurrencia.ToString(), siniestro.DireccionDelHecho, siniestro.DescripcionDelHecho, siniestro.idTercero};
                 Boolean encontre = false;
                 int cont = 0;
                 while (!encontre && cont < siniestros.Count)
@@ -174,8 +193,9 @@ namespace Aseguradora.Repositorios
                             st[3] fechaOcurrencia
                             st[4] direccionDelHecho
                             st[5] descripcionDelHecho
+                            st[6] terceroId
                          */
-                        Siniestro newSiniestro = new Siniestro(st[1], st[2], st[3], st[4], st[5]);
+                        Siniestro newSiniestro = new Siniestro(st[1], st[2], st[3], st[4], st[5], st[6]);
                         newSiniestro.ID = Int32.Parse(st[0]);
                         resultado.Add(newSiniestro);
                     }
