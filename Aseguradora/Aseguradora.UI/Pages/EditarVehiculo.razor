@@ -3,12 +3,12 @@
 @inject AgregarVehiculoUseCase AgregarVehiculoUseCase
 @inject ModificarVehiculoUseCase ModificarVehiculoUseCase
 
-<input placeholder="Marca" @bind="_titular.Marca" class="form-control">
-<input placeholder="Modelo" @bind="_titular.Fabricacion" class="form-control">
-<input placeholder="Dominio" @bind="_titular.Dominio" class="form-control">
+<input placeholder="Marca" @bind="vehiculo.Marca" class="form-control">
+<input placeholder="Modelo" @bind="_vehiculo.Fabricacion" class="form-control">
+<input placeholder="Dominio" @bind="_vehiculo.Dominio" class="form-control">
 <button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
 
-@if (_esNuevoVehiculo)
+@if (_esNuevo)
 {
    <h3>Agregando un nuevo Vehiculo</h3>
 }
@@ -17,8 +17,9 @@ else
    <h3>Modificando al Vehiculo "@_vehiculo.Nombre"</h3>
 } 
 
-<input placeholder="Marca" @bind="_vehiculo.Marca" class="form-control">
-<input placeholder="Modelo" @bind="_cliente.Fabricacion" class="form-control">
+<input placeholder="Marca" @bind="vehiculo.Marca" class="form-control">
+<input placeholder="Modelo" @bind="_vehiculo.Fabricacion" class="form-control">
+<input placeholder="Dominio" @bind="_vehiculo.Dominio" class="form-control">
 <button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
 
 @code {
@@ -41,11 +42,11 @@ else
    {
        if (_esNuevo)
        {
-           AgregarVehiculoUseCase.Ejecutar(_titular);
+           AgregarVehiculoUseCase.Ejecutar(_vehiculo);
        }
        else
        {
-           ModificarVehiculoUseCase.Ejecutar(_titular);
+           ModificarVehiculoUseCase.Ejecutar(_vehiculo);
        }
        _vehiculo = new Vehiculo();
        Navegador.NavigateTo("listadovehiculos");

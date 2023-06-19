@@ -1,0 +1,60 @@
+@page "/poliza/{ID:int?}"
+@inject NavigationManager Navegador;
+@inject AgregarPolizaUseCase AgregarPolizaUseCase
+@inject ModificarPolizaUseCase ModificarPolizaUseCase
+
+<input placeholder="ID del vehículo asegurado" @bind="_poliza.IDVehiculoAsegurado" class="form-control">
+<input placeholder="Valor asegurado" @bind="_poliza.valorAsegurado" class="form-control">
+<input placeholder="Franquicia" @bind="_poliza.Franquicia" class="form-control">
+<input placeholder="Cobertura" @bind="_poliza.Cobertura" class="form-control">
+<input placeholder="Vigente desde" @bind="_poliza.VigenteDesde" class="form-control">
+<input placeholder="Vigente Hasta" @bind="_poliza.VigenteHasta" class="form-control">
+<button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
+
+@if (_esNuevaPoliza)
+{
+   <h3>Agregando una nueva Póliza</h3>
+}
+else
+{
+   <h3>Modificando a la póliza "@_poliza.ID"</h3>
+} 
+
+<input placeholder="ID del vehículo asegurado" @bind="_poliza.IDVehiculoAsegurado" class="form-control">
+<input placeholder="Valor asegurado" @bind="_poliza.valorAsegurado" class="form-control">
+<input placeholder="Franquicia" @bind="_poliza.Franquicia" class="form-control">
+<input placeholder="Cobertura" @bind="_poliza.Cobertura" class="form-control">
+<input placeholder="Vigente desde" @bind="_poliza.VigenteDesde" class="form-control">
+<input placeholder="Vigente Hasta" @bind="_poliza.VigenteHasta" class="form-control">
+<button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
+
+@code {
+    Poliza _poliza = new Poliza();
+    [Parameter] public int? ID { get; set; }
+    bool _esNuevaPoliza = true;
+    protected override void OnParametersSet()
+    {
+        if (ID != null)
+        {
+            var p_hallada = ObtenerPolizaUseCase.Ejecutar(ID.Value);
+            if (p_hallada != null)
+            {
+                _vehiculo = v_hallado;
+                _esNuevo = false;
+            }
+        }
+    }
+   void Aceptar()
+   {
+       if (_esNuevaPoliza)
+       {
+           AgregarPolizaUseCase.Ejecutar(_poliza);
+       }
+       else
+       {
+           ModificarPolizaUseCase.Ejecutar(_poliza);
+       }
+       _poliza = new Poliza();
+       Navegador.NavigateTo("listadopolizas");
+   }  
+}
