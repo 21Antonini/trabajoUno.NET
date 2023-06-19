@@ -1,0 +1,71 @@
+@page "/listadopolizas"
+@inject ListarPolizasUseCase ListarPolizasUseCase
+@inject EliminarPolizasUseCase EliminarPolizasUseCase
+@inject NavigationManager Navegador
+
+<DialogoConfirmacion @ref="dialogo" OnConfirmado="Eliminar"/>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>ID Del vehiculo asegurado</th>
+            <th>Valor Asegurado</th>
+            <th>Franquicia</th>
+            <th>Cobertura</th>
+            <th>Vigente Desde</th>
+            <th>Vigente Hasta</th>
+            <th>ACCIÓN</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in _lista)
+        {
+            <tr>
+                <td>@p.ID</td>
+                <td>@p.IDVehiculoAsegurado</td>
+                <td>@p.valorAsegurado</td>
+                <td>@p.Franquicia</td>
+                <td>@p.VigenteDesde</td>
+                <td>@p.VigenteHasta</td>
+                <td>
+                    <button class="btn btn-primary">
+                        <span class="oi oi-pencil"></span>
+                    </button>
+                    <button class="btn btn-danger" @onclick="()=>ConfirmarEliminacion(p)">
+                        <span class="oi oi-trash"></span>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@code {
+    List<Poliza> _lista = new List<Poliza>();
+    protected override void OnInitialized()
+    {
+        _lista = ListarPolizasUseCase.Ejecutar();
+    }
+
+    DialogoConfirmacion dialogo = null!;
+    Poliza? _polizaParaEliminar = null;
+    private void ConfirmarEliminacion(Poliza p)
+    {
+        _polizaParaEliminar = p;
+        dialogo.Mensaje = $"¿Desea eliminar la poliza del vehiculo {p.IDVehiculoAsegurado} Vigente desde: {p.VigenteDesde} Hasta: {p.VigenteHasta}?";
+        dialogo.Mostrar();
+    }   //Dialogo de confirmacion para eliminar polizas
+    private void Eliminar()
+    {
+        if (_polizaParaEliminar != null)
+        {
+            EliminarPolizaUseCase.Ejecutar(_polizaParaEliminar.ID);
+            _lista = ListarPolizasUseCase.Ejecutar(); 
+        }
+    }
+    void ModificarPoliza(Poliza p)
+    {
+        Navegador.NavigateTo($"poliza/{p.ID}");
+    }
+}
