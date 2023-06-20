@@ -1,16 +1,18 @@
 using Aseguradora.Aplicacion.Entidades;
 using Aseguradora.Aplicacion.Interfaces;
 
-namespace Aseguradora.Aplicacion;
-public class ListarSiniestroUseCase
+namespace Aseguradora.Aplicacion.UserCase
 {
-    IRepoSiniestro _repo;
-    public ListarSiniestroUseCase(IRepoSiniestro repo)
+    public class ListarSiniestroUseCase
     {
-        _repo = repo;
-    }
-    public List<Siniestro> Ejecutar()
-    {
-        return _repo.ListarSiniestros();
+        IRepoSiniestro _repo;
+        public ListarSiniestroUseCase(IRepoSiniestro repo)
+        {
+            _repo = repo;
+        }
+        public List<Siniestro> Ejecutar()
+        {
+            return _repo.ListarSiniestros();
+        }
     }
 }

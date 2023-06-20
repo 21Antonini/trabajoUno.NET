@@ -1,5 +1,5 @@
 @page "/listadosiniestros"
-@inject ListarSiniestrosUseCase ListarSiniestrosUseCase
+@inject ListarSiniestroUseCase ListarSiniestroUseCase
 @inject EliminarSiniestroUseCase EliminarSiniestroUseCase
 @inject NavigationManager Navegador
 
@@ -9,7 +9,6 @@
         <tr>
             <th>ID</th>
             <th>ID de póliza</th>
-            <th>ID de tercero</th>
             <th>Fecha de carga al sistema</th>
             <th>Fecha de ocurrencia</th>
             <th>Dirección del hecho</th>
@@ -22,8 +21,7 @@
         {
             <tr>
                 <td>@s.ID</td>
-                <td>@s.idPoliza</td>
-                <td>@s.idTercero</td>
+                <td>@s.PolizaId</td>
                 <td>@s.FechaCargaSistema</td>
                 <td>@s.FechaOcurrencia</td>
                 <td>@s.DireccionDelHecho</td>
@@ -46,7 +44,7 @@
     List<Siniestro> _lista = new List<Siniestro>();
     protected override void OnInitialized()
     {
-        _lista = ListarSiniestrosUseCase.Ejecutar();
+        _lista = ListarSiniestroUseCase.Ejecutar();
     }
 
     DialogoConfirmacion dialogo = null!;
@@ -62,7 +60,7 @@
         if (_siniestroParaEliminar != null)
         {
             EliminarSiniestroUseCase.Ejecutar(_siniestroParaEliminar.ID);
-            _lista = ListarSiniestrosUseCase.Ejecutar(); 
+            _lista = ListarSiniestroUseCase.Ejecutar(); 
         }
     }
     void ModificarSiniestro(Siniestro s)

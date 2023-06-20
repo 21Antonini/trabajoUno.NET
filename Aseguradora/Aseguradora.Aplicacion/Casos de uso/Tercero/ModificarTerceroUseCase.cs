@@ -1,16 +1,18 @@
 using Aseguradora.Aplicacion.Entidades;
 using Aseguradora.Aplicacion.Interfaces;
 
-namespace Aseguradora.Aplicacion;
-public class ModificarTerceroUseCase
+namespace Aseguradora.Aplicacion.UserCase
 {
-    IRepoTercero _repo;
-    public ModificarTerceroUseCase(IRepoTercero repo)
+    public class ModificarTerceroUseCase
     {
-        _repo = repo;
-    }
-    public void Ejecutar(Tercero T)
-    {
-        _repo.ModificarTercero(T);
+        IRepoTercero _repo;
+        public ModificarTerceroUseCase(IRepoTercero repo)
+        {
+            _repo = repo;
+        }
+        public void Ejecutar(Tercero T)
+        {
+            _repo.ModificarTercero(T);
+        }
     }
 }

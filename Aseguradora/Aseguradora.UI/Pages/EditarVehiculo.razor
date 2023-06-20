@@ -2,8 +2,9 @@
 @inject NavigationManager Navegador;
 @inject AgregarVehiculoUseCase AgregarVehiculoUseCase
 @inject ModificarVehiculoUseCase ModificarVehiculoUseCase
+@inject ObtenerVehiculoUseCase ObtenerVehiculoUseCase
 
-<input placeholder="Marca" @bind="vehiculo.Marca" class="form-control">
+<input placeholder="Marca" @bind="_vehiculo.Marca" class="form-control">
 <input placeholder="Modelo" @bind="_vehiculo.Fabricacion" class="form-control">
 <input placeholder="Dominio" @bind="_vehiculo.Dominio" class="form-control">
 <button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
@@ -14,10 +15,10 @@
 }
 else
 {
-   <h3>Modificando al Vehiculo "@_vehiculo.Nombre"</h3>
+   <h3>Modificando al Vehiculo "@_vehiculo.Dominio"</h3>
 } 
 
-<input placeholder="Marca" @bind="vehiculo.Marca" class="form-control">
+<input placeholder="Marca" @bind="_vehiculo.Marca" class="form-control">
 <input placeholder="Modelo" @bind="_vehiculo.Fabricacion" class="form-control">
 <input placeholder="Dominio" @bind="_vehiculo.Dominio" class="form-control">
 <button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>

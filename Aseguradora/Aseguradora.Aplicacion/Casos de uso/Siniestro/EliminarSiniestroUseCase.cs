@@ -1,15 +1,17 @@
 using Aseguradora.Aplicacion.Interfaces;
 
-namespace Aseguradora.Aplicacion;
-public class EliminarSiniestroUseCase
+namespace Aseguradora.Aplicacion.UserCase
 {
-    IRepoSiniestro _repo;
-    public EliminarSiniestroUseCase(IRepoSiniestro repo)
+    public class EliminarSiniestroUseCase
     {
-        _repo = repo;
-    }
-    public void Ejecutar(int ID)
-    {
-        _repo.EliminarSiniestro(ID);
+        IRepoSiniestro _repo;
+        public EliminarSiniestroUseCase(IRepoSiniestro repo)
+        {
+            _repo = repo;
+        }
+        public void Ejecutar(int ID)
+        {
+            _repo.EliminarSiniestro(ID);
+        }
     }
 }

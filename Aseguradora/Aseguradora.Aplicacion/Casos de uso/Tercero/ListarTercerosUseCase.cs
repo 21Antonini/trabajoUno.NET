@@ -1,16 +1,18 @@
 using Aseguradora.Aplicacion.Entidades;
 using Aseguradora.Aplicacion.Interfaces;
 
-namespace Aseguradora.Aplicacion;
-public class ListarTercerosUseCase
+namespace Aseguradora.Aplicacion.UserCase
 {
-    IRepoTercero _repo;
-    public ListarTercerosUseCase(IRepoTercero repo)
+    public class ListarTercerosUseCase
     {
-        _repo = repo;
-    }
-    public List<Tercero> Ejecutar()
-    {
-        return _repo.ListarTerceros();
+        IRepoTercero _repo;
+        public ListarTercerosUseCase(IRepoTercero repo)
+        {
+            _repo = repo;
+        }
+        public List<Tercero> Ejecutar()
+        {
+            return _repo.ListarTerceros();
+        }
     }
 }

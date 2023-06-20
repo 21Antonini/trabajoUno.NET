@@ -1,15 +1,17 @@
 using Aseguradora.Aplicacion.Interfaces;
 
-namespace Aseguradora.Aplicacion;
-public class EliminarTitularUseCase
+namespace Aseguradora.Aplicacion.UserCase
 {
-    IRepoTitular _repo;
-    public EliminarTitularUseCase(IRepoTitular repo)
+    public class EliminarTitularUseCase
     {
-        _repo = repo;
-    }
-    public void Ejecutar(int ID)
-    {
-        _repo.EliminarTitular(ID);
+        IRepoTitular _repo;
+        public EliminarTitularUseCase(IRepoTitular repo)
+        {
+            _repo = repo;
+        }
+        public void Ejecutar(int ID)
+        {
+            _repo.EliminarTitular(ID);
+        }
     }
 }

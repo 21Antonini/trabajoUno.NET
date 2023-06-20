@@ -1,16 +1,18 @@
 using Aseguradora.Aplicacion.Entidades;
 using Aseguradora.Aplicacion.Interfaces;
 
-namespace Aseguradora.Aplicacion;
-public class ModificarSiniestroUseCase
+namespace Aseguradora.Aplicacion.UserCase
 {
-    IRepoSiniestro _repo;
-    public ModificarSiniestroUseCase(IRepoSiniestro repo)
+    public class ModificarSiniestroUseCase
     {
-        _repo = repo;
-    }
-    public void Ejecutar(Siniestro S)
-    {
-        _repo.ModificarSiniestro(S);
+        IRepoSiniestro _repo;
+        public ModificarSiniestroUseCase(IRepoSiniestro repo)
+        {
+            _repo = repo;
+        }
+        public void Ejecutar(Siniestro S)
+        {
+            _repo.ModificarSiniestro(S);
+        }
     }
 }
