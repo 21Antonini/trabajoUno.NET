@@ -3,7 +3,7 @@
 @inject EliminarTitularUseCase EliminarTitularUseCase
 @inject NavigationManager Navegador
 
-<DialogoConfirmacion @ref="dialogo" OnConfirmado="Eliminar"/>
+<DialogoConfirmacion @ref?="dialogo" OnConfirmado="Eliminar"/>
 <table class="table">
     <thead>
         <tr>
@@ -44,12 +44,12 @@
     }
 
     DialogoConfirmacion dialogo = null!;
-    Titular _titularParaEliminar = null;
+    Titular? _titularParaEliminar = null;
     private void ConfirmarEliminacion(Titular t)
     {
         _titularParaEliminar = t;
-        dialogo.Mensaje = $"¿Desea eliminar al titular {t.Nombre} {t.Apellido} {t.DNI}?";
-        dialogo.Mostrar();
+        string Mensaje = $"¿Desea eliminar al titular {t.Nombre} {t.Apellido} {t.DNI}?";
+        dialogo.Mostrar(Mensaje);
     }   //Dialogo de confirmacion para eliminar titulares
     private void Eliminar()
     {

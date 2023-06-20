@@ -13,8 +13,9 @@
     [Parameter]
     public string Mensaje {get;set;}="";
 
-    public void Mostrar()
+    public void Mostrar(string msg)
     {
+        this.Mensaje = msg;
         visible=true;
         StateHasChanged();
     }

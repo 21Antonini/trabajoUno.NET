@@ -3,7 +3,7 @@
 @inject EliminarSiniestroUseCase EliminarSiniestroUseCase
 @inject NavigationManager Navegador
 
-<DialogoConfirmacion @ref="dialogo" OnConfirmado="Eliminar"/>
+<DialogoConfirmacion @ref?="dialogo" OnConfirmado="Eliminar"/>
 <table class="table">
     <thead>
         <tr>
@@ -52,8 +52,8 @@
     private void ConfirmarEliminacion(Siniestro s)
     {
         _siniestroParaEliminar = s;
-        dialogo.Mensaje = $"¿Desea eliminar al siniestro {s.DireccionDelHecho} {s.DescripcionDelHecho} ?";
-        dialogo.Mostrar();
+        string Mensaje = $"¿Desea eliminar al siniestro {s.DireccionDelHecho} {s.DescripcionDelHecho} ?";
+        dialogo.Mostrar(Mensaje);
     }   //Dialogo de confirmacion para eliminar siniestros
     private void Eliminar()
     {
