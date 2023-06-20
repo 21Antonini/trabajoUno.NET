@@ -1,0 +1,59 @@
+@page "/siniestro/{ID:int?}"
+@inject NavigationManager Navegador;
+@inject AgregarSiniestroUseCase AgregarSiniestroUseCase
+@inject ModificarSiniestroUseCase ModificarSiniestroUseCase
+
+<input placeholder="ID de la poliza" @bind="_siniestro.idPoliza" class="form-control">
+<input placeholder="ID del tercero" @bind="_siniestro.idTercero" class="form-control">
+<input placeholder="Fecha de ocurrencia" @bind="_siniestro.FechaOcurrencia" class="form-control">
+<input placeholder="Dirección del hecho" @bind="_siniestro.DireccionDelHecho" class="form-control">
+<input placeholder="Descripción" @bind="_siniestro.DescripcionDelHecho" class="form-control">
+<button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
+
+@if (_esNuevo)
+{
+   <h3>Agregando un nuevo siniestro</h3>
+}
+else
+{
+   <h3>Modificando al Siniestro "@_siniestro.DescripcionDelHecho"</h3>
+} 
+
+<input placeholder="ID de la poliza" @bind="_siniestro.idPoliza" class="form-control">
+<input placeholder="ID del tercero" @bind="_siniestro.idTercero" class="form-control">
+<input placeholder="Fecha de ocurrencia" @bind="_siniestro.FechaOcurrencia" class="form-control">
+<input placeholder="Dirección del hecho" @bind="_siniestro.DireccionDelHecho" class="form-control">
+<input placeholder="Descripción" @bind="_siniestro.DescripcionDelHecho" class="form-control">
+<button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
+
+
+@code {
+    Siniestro _siniestro = new Siniestro();
+    [Parameter] public int? ID { get; set; }
+    bool _esNuevo = true;
+    protected override void OnParametersSet()
+    {
+        if (ID != null)
+        {
+            var s_hallado = ObtenerSiniestroUseCase.Ejecutar(ID.Value);
+            if (s_hallado != null)
+            {
+                _siniestro = s_hallado;
+                _esNuevo = false;
+            }
+        }
+    }
+   void Aceptar()
+   {
+       if (_esNuevo)
+       {
+           AgregarSiniestroUseCase.Ejecutar(_siniestro);
+       }
+       else
+       {
+           ModificarSiniestroUseCase.Ejecutar(_siniestro);
+       }
+       _siniestro = new Siniestro();
+       Navegador.NavigateTo("listadosiniestros");
+   }  
+}

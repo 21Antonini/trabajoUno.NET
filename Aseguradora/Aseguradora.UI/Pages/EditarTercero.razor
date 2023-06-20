@@ -1,0 +1,61 @@
+@page "/tercero/{ID:int?}"
+@inject NavigationManager Navegador;
+@inject AgregarTerceroUseCase AgregarTerceroUseCase
+@inject ModificarTerceroUseCase ModificarTerceroUseCase
+
+<input placeholder="Nombre" @bind="_tercero.Nombre" class="form-control">
+<input placeholder="Apellido" @bind="_tercero.Apellido" class="form-control">
+<input placeholder="DNI" @bind="_tercero.DNI" class="form-control">
+<input placeholder="Telefono" @bind="_tercero.Telefono" class="form-control">
+<input placeholder="Aseguradora" @bind="_tercero.Aseguradora" class="form-control">
+<input placeholder="Siniestro" @bind="_tercero.Siniestro" class="form-control">
+<button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
+
+@if (_esNuevo)
+{
+   <h3>Agregando un nuevo Tercero</h3>
+}
+else
+{
+   <h3>Modificando al Tercero "@_tercero.Nombre"</h3>
+} 
+
+<input placeholder="Nombre" @bind="_tercero.Nombre" class="form-control">
+<input placeholder="Apellido" @bind="_tercero.Apellido" class="form-control">
+<input placeholder="DNI" @bind="_tercero.DNI" class="form-control">
+<input placeholder="Telefono" @bind="_tercero.Telefono" class="form-control">
+<input placeholder="Aseguradora" @bind="_tercero.Aseguradora" class="form-control">
+<input placeholder="Siniestro" @bind="_tercero.Siniestro" class="form-control">
+<button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
+
+
+@code {
+    Tercero _tercero = new Tercero();
+    [Parameter] public int? ID { get; set; }
+    bool _esNuevo = true;
+    protected override void OnParametersSet()
+    {
+        if (ID != null)
+        {
+            var t_hallado = ObtenerTerceroUseCase.Ejecutar(ID.Value);
+            if (t_hallado != null)
+            {
+                _tercero = t_hallado;
+                _esNuevo = false;
+            }
+        }
+    }
+   void Aceptar()
+   {
+       if (_esNuevo)
+       {
+           AgregarTerceroUseCase.Ejecutar(_tercero);
+       }
+       else
+       {
+           ModificarTerceroUseCase.Ejecutar(_tercero);
+       }
+       _tercero = new Tercero();
+       Navegador.NavigateTo("listadoterceros");
+   }  
+}

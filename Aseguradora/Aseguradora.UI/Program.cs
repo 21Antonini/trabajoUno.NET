@@ -22,7 +22,14 @@ builder.Services.AddTransient<AgregarVehiculoUseCase>();
 builder.Services.AddTransient<ListarVehiculosUseCase>();
 builder.Services.AddTransient<EliminarVehiculoUseCase>();
 builder.Services.AddTransient<ModificarVehiculoUseCase>();
-
+builder.Services.AddTransient<AgregarSiniestroUseCase>();
+builder.Services.AddTransient<ListarSiniestrosUseCase>();
+builder.Services.AddTransient<EliminarSiniestroUseCase>();
+builder.Services.AddTransient<ModificarSiniestroUseCase>();
+builder.Services.AddTransient<ListarTercerosUseCase>();
+builder.Services.AddTransient<AgregarTerceroUseCase>();
+builder.Services.AddTransient<ModificarTerceroUseCase>();
+builder.Services.AddTransient<EliminarTerceroUseCase>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
