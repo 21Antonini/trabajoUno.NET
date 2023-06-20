@@ -9,8 +9,8 @@ public class ModificarSiniestroUseCase
     {
         _repo = repo;
     }
-    public void Ejecutar(Siniestro S)
-    {
-        _repo.ModificarSiniestro(S);
-    }
+    //public void Ejecutar(Siniestro S)
+    //{
+    //    _repo.ModificarSiniestro(S);
+    //}
 }

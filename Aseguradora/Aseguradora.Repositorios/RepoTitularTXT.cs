@@ -1,238 +1,87 @@
 ﻿using Aseguradora.Aplicacion.Entidades;
 using Aseguradora.Aplicacion.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 
 namespace Aseguradora.Repositorios;
 public class RepoTitularTXT : IRepoTitular
 {
-    static private string? _obtenerPath(string archivo)
-    {
-        DirectoryInfo directory = new DirectoryInfo(Environment.CurrentDirectory);
-        return directory.Parent.Parent.Parent.FullName + "\\" + "datos" + "\\" + archivo;
-    }
-
-    private string? _path = _obtenerPath("titulares.txt");
-    private string? _idsPath = _obtenerPath("persistenciaIDs.txt");
-    public string determinarID()
-    {
-        using (StreamReader sr = new StreamReader(_idsPath))
-        {
-            string?[] ids = new string[4];
-            //ids llevara un conteo de la cantidad de ids creada por cada entidad
-            //ids[0] titulares
-            //ids[1] polizas
-            //ids[2] vehiculos
-            //ids[3] siniestros
-            //ids[4] terceros
-            ids = sr.ReadLine().Split(',');
-            return ids[0];
-        }
-    }
-    public void actualizarID()
-    {
-        string?[] ids = new string[4];
-        using (StreamReader sr = new StreamReader(_idsPath))
-        {
-            //ids llevara un conteo de la cantidad de ids creada por cada entidad
-            //ids[0] titulares
-            //ids[1] polizas
-            //ids[2] vehiculos
-            //ids[3] siniestros
-            //ids[4] terceros
-            ids = sr.ReadLine().Split(',');
-        }
-        using (StreamWriter sw = new StreamWriter(_idsPath, false))
-        {
-            int aux = Int32.Parse(ids[0]);
-            aux++;
-            sw.WriteLine($"{aux},{ids[1]},{ids[2]},{ids[3]},{ids[4]}");
-        }
-    }
-
     public void AgregarTitular(Titular titular)
     {
-        using (StreamReader sr = new StreamReader(_path))
+        using (var db = new AseguradoraContext())
         {
-            List<string[]> titulares = new List<string[]>();
-            while (!sr.EndOfStream)
+            var titularAgregar = db.Titular.Where(t => t.DNI == titular.DNI).SingleOrDefault();
+            if (titularAgregar == null)
             {
-                titulares.Add(sr.ReadLine().Split(','));
+                db.Add(titular);
+                db.SaveChanges();
             }
-
-            foreach (string[] st in titulares)
-            {
-                if (st[1].Equals(titular.DNI))
-                {
-                    throw new Exception("El titular ingresado ya existe.");
-                }
-            }
-        }
-
-        using (StreamWriter sw = new StreamWriter(_path, true))
-        {
-            sw.WriteLine($"{determinarID()},{titular.DNI},{titular.Nombre},{titular.Apellido},{titular.Mail},{titular.Telefono},{titular.Direccion}");
-            actualizarID();
+            else { throw new Exception("El titular ingresado ya existe."); }
         }
     }
-    public void ModificarTitular(Titular titular)
-    {
-        List<string[]> titulares = new List<string[]>();
-        using (StreamReader sr = new StreamReader(_path))
-        {
-            while (!sr.EndOfStream)
-            {
-                titulares.Add(sr.ReadLine().Split(','));
-            }
-        }
-        using (StreamWriter sw = new StreamWriter(_path))
-        {
-            string[] titularModificado = { "0", titular.DNI,titular.Nombre,titular.Apellido,titular.Mail,titular.Telefono,titular.Direccion};
-            Boolean encontre = false;
-            int cont = 0;
-            while (!encontre && cont < titulares.Count)
-            {
-                if (titulares[cont][1].Equals(titular.DNI))
-                {
-                    titularModificado[0] = titulares[cont][0];
-                    titulares[cont] = titularModificado;
-                    encontre = true;
-                }
-                cont++;
-            }
 
-            if(!encontre)
-            {
-                throw new Exception("El DNI ingresado no corresponde a ningun titular registrado.");
-            }
-            else
-            {
-                foreach (string[] st in titulares)
-                {
-                    sw.WriteLine(string.Join(",", st));
-                }
-            }
-        }
-    }
     public void EliminarTitular(int idTitular)
     {
-        List<string[]> titulares = new List<string[]>();
-        using (StreamReader sr = new StreamReader(_path))
+        using (var db = new AseguradoraContext())
         {
-            while (!sr.EndOfStream)
+            var titularBorrar = db.Titular.Where(t => t.ID == idTitular).SingleOrDefault();
+            if (titularBorrar != null)
             {
-                titulares.Add(sr.ReadLine().Split(','));
+                db.Remove(titularBorrar); //se borra realmente con el db.SaveChanges()
+                db.SaveChanges();
             }
-
-        }
-        using (StreamWriter sw = new StreamWriter(_path))
-        {
-            Boolean encontre = false;
-            int cont = 0;
-            while (!encontre && cont < titulares.Count)
-            {
-                if (titulares[cont][0].Equals(idTitular.ToString()))
-                {
-                    string[] titularModificado = titulares[cont];
-                    titularModificado[0] = "*" + titularModificado[0];
-                    titulares[cont] = titularModificado;
-                    encontre = true;
-                }
-                cont++;
-            }
-
-            if (!encontre)
-            {
-                throw new Exception("El ID ingresado no corresponde a ningun titular registrado.");
-            }
-            else
-            {
-                foreach (string[] st in titulares)
-                {
-                    sw.WriteLine(string.Join(",", st));
-                }
-            }
+            else { throw new Exception("El ID ingresado no corresponde a ningun titular registrado."); }
         }
     }
-    
-    public Titular ObtenerTitular(int id)
+
+
+    public void ModificarTitular(Titular titular)
     {
-        using (StreamReader sr = new StreamReader(_path))
+        using (var db = new AseguradoraContext())
         {
-            Titular newTitular = new Titular("-1", "default", "default");
-            Boolean encontre = false;
-            while (!sr.EndOfStream && !encontre)
+            var titu = db.Titular.Where(n => n.ID == titular.ID).SingleOrDefault();
+            if (titu != null)
             {
-                string[] st = sr.ReadLine().Split(',');
-                if (!st[0].Contains("*") && st[0].Equals(id.ToString()))
-                {
-                    /*
-                        st[0] id 
-                        st[1] dni
-                        st[2] nombre
-                        st[3] apellido
-                        st[4] mail
-                        st[5] telefono
-                        st[6] direccion
-                     */
-                    newTitular = new Titular(st[1], st[2], st[3], st[5], st[6], st[4]);
-                    newTitular.ID = Int32.Parse(st[0]);
-                    encontre = true;
-                }
+                titu.DNI = titular.DNI;
+                titu.Nombre = titular.Nombre; ;
+                titu.Apellido = titular.Apellido;
+                titu.Telefono = titular.Telefono;
+                titu.Direccion = titular.Direccion;
+                db.SaveChanges();
             }
-
-            if(!encontre)
-            {
-                throw new Exception("Titular no encontrado.");
-            }
-            return newTitular;
+            else { throw new Exception("El Titular ingresado no corresponde a ninguno registrado."); };
         }
     }
+
 
     public List<Titular> ListarTitulares()
     {
-        List<Titular> resultado = new List<Titular> ();
-        using (StreamReader sr = new StreamReader(_path))
+        List<Titular> resultado = new List<Titular>();
+        using (var db = new AseguradoraContext())
         {
-            while (!sr.EndOfStream)
-            {
-                string[] st = sr.ReadLine().Split(',');
-                if (!st[0].Contains("*"))
-                {
-                    /*
-                        st[0] id 
-                        st[1] dni
-                        st[2] nombre
-                        st[3] apellido
-                        st[4] mail
-                        st[5] telefono
-                        st[6] direccion
-                     */
-                    Titular newTitular = new Titular(st[1], st[2], st[3], st[5], st[6], st[4]);
-                    newTitular.ID = Int32.Parse(st[0]);
-                    resultado.Add(newTitular);
-                }
-            }
+            resultado = db.Titular.ToList();
         }
         return resultado;
     }
 
-    public List<Titular> ListarTitularesConVehiculos(List<Vehiculo> vehiculos)
-    {
-        List<Titular> titularesConVehiculos = new List<Titular>();
-        List<Titular> titulares = ListarTitulares();
-        foreach(Titular titular in titulares)
-        {
-            foreach (Vehiculo vehiculo in vehiculos)
-            {
-                if (vehiculo.idTitular == titular.ID)
-                {
-                    titular.listaVehiculos.Add(vehiculo);
-                }
-            }
-            titularesConVehiculos.Add(titular);
-        }
-        return titularesConVehiculos;
-    }
 
-   
+    //public List<Titular> ListarTitularesConVehiculos(List<Vehiculo> vehiculos)
+    //{
+    //    List<Titular> titularesConVehiculos = new List<Titular>();
+    //    List<Titular> titulares = ListarTitulares();
+    //    foreach (Titular titular in titulares)
+    //    {
+    //        foreach (Vehiculo vehiculo in vehiculos)
+    //        {
+    //            if (vehiculo.idTitular == titular.ID)
+    //            {
+    //                titular.listaVehiculos.Add(vehiculo);
+    //            }
+    //        }
+    //        titularesConVehiculos.Add(titular);
+    //    }
+    //    return titularesConVehiculos;
+    //}
+
+
 }

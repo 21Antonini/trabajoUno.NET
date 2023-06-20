@@ -6,184 +6,62 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aseguradora.Repositorios
+namespace Aseguradora.Repositorios;
+public class RepoTercero : IRepoTercero
 {
-    public class RepoTercero: IRepoTercero
+    public void AgregarTercero(Tercero tercero)
     {
-        static private string? _obtenerPath(string archivo)
+        using (var db = new AseguradoraContext())
         {
-            DirectoryInfo directory = new DirectoryInfo(Environment.CurrentDirectory);
-            return directory.Parent.Parent.Parent.FullName + "\\" + "datos" + "\\" + archivo;
+            var terceroAgregar = db.Tercero.Where(t => t.DNI == tercero.DNI).SingleOrDefault();
+            if (terceroAgregar == null)
+            {
+                db.Add(tercero);
+                db.SaveChanges();
+            }
+            else { throw new Exception("El tercero ingresado ya existe."); }
         }
-
-        private string? _path = _obtenerPath("terceros.txt");
-        private string? _idsPath = _obtenerPath("persistenciaIDs.txt");
-        public string determinarID()
+    }
+    public void EliminarTercero(int idTercero)
+    {
+        using (var db = new AseguradoraContext())
         {
-            using (StreamReader sr = new StreamReader(_idsPath))
+            var terceroBorrar = db.Titular.Where(t => t.ID == idTercero).SingleOrDefault();
+            if (terceroBorrar != null)
             {
-                string?[] ids = new string[4];
-                //ids llevara un conteo de la cantidad de ids creada por cada entidad
-                //ids[0] titulares
-                //ids[1] polizas
-                //ids[2] vehiculos
-                //ids[3] siniestros
-                //ids[4] terceros
-                ids = sr.ReadLine().Split(',');
-                return ids[4];
+                db.Remove(terceroBorrar); 
+                db.SaveChanges();
             }
+            else { throw new Exception("El ID ingresado no corresponde a ningun tercero registrado."); }
         }
-        public void actualizarID()
+    }
+
+    public void ModificarTercero(Tercero tercero)
+    {
+        using (var db = new AseguradoraContext())
         {
-            string?[] ids = new string[4];
-            using (StreamReader sr = new StreamReader(_idsPath))
+            var ter = db.Tercero.Where(n => n.ID == tercero.ID).SingleOrDefault();
+            if (ter != null)
             {
-                //ids llevara un conteo de la cantidad de ids creada por cada entidad
-                //ids[0] titulares
-                //ids[1] polizas
-                //ids[2] vehiculos
-                //ids[3] siniestros
-                //ids[4] terceros
-                ids = sr.ReadLine().Split(',');
+                ter.DNI = tercero.DNI;
+                ter.Nombre = tercero.Nombre; ;
+                ter.Apellido = tercero.Apellido;
+                ter.Telefono = tercero.Telefono;
+                ter.Aseguradora = tercero.Aseguradora;
+                ter.SiniestroID = tercero.SiniestroID;
+                db.SaveChanges();
             }
-            using (StreamWriter sw = new StreamWriter(_idsPath, false))
-            {
-                int aux = Int32.Parse(ids[4]);
-                aux++;
-                sw.WriteLine($"{ids[0]},{ids[1]},{ids[2]},{ids[3]},{aux}");
-            }
+            else { throw new Exception("El Tercero ingresado no corresponde a ninguno registrado."); };
         }
+    }
 
-        public void AgregarTercero(Tercero tercero)
+    public List<Tercero> ListarTerceros()
+    {
+        List<Tercero> resultado = new List<Tercero>();
+        using (var db = new AseguradoraContext())
         {
-            using (StreamReader sr = new StreamReader(_path))
-            {
-                List<string[]> terceroes = new List<string[]>();
-                while (!sr.EndOfStream)
-                {
-                    terceroes.Add(sr.ReadLine().Split(','));
-                }
-
-                foreach (string[] st in terceroes)
-                {
-                    if (st[1].Equals(tercero.DNI))
-                    {
-                        throw new Exception("El tercero ingresado ya existe.");
-                    }
-                }
-            }
-
-            using (StreamWriter sw = new StreamWriter(_path, true))
-            {
-                sw.WriteLine($"{determinarID()},{tercero.DNI},{tercero.Nombre},{tercero.Apellido},{tercero.Aseguradora},{tercero.Telefono},{tercero.Siniestro}");
-                actualizarID();
-            }
+            resultado = db.Tercero.ToList();
         }
-        public void ModificarTercero(Tercero tercero)
-        {
-            List<string[]> terceros = new List<string[]>();
-            using (StreamReader sr = new StreamReader(_path))
-            {
-                while (!sr.EndOfStream)
-                {
-                    terceros.Add(sr.ReadLine().Split(','));
-                }
-            }
-            using (StreamWriter sw = new StreamWriter(_path))
-            {
-                string[] terceroModificado = { "0", tercero.DNI, tercero.Nombre, tercero.Apellido, tercero.Aseguradora, tercero.Telefono, tercero.Siniestro };
-                Boolean encontre = false;
-                int cont = 0;
-                while (!encontre && cont < terceros.Count)
-                {
-                    if (terceros[cont][1].Equals(tercero.DNI))
-                    {
-                        terceroModificado[0] = terceros[cont][0];
-                        terceros[cont] = terceroModificado;
-                        encontre = true;
-                    }
-                    cont++;
-                }
-
-                if (!encontre)
-                {
-                    throw new Exception("El DNI ingresado no corresponde a ningun tercero registrado.");
-                }
-                else
-                {
-                    foreach (string[] st in terceros)
-                    {
-                        sw.WriteLine(string.Join(",", st));
-                    }
-                }
-            }
-        }
-        public void EliminarTercero(int idTercero)
-        {
-            List<string[]> terceros = new List<string[]>();
-            using (StreamReader sr = new StreamReader(_path))
-            {
-                while (!sr.EndOfStream)
-                {
-                    terceros.Add(sr.ReadLine().Split(','));
-                }
-
-            }
-            using (StreamWriter sw = new StreamWriter(_path))
-            {
-                Boolean encontre = false;
-                int cont = 0;
-                while (!encontre && cont < terceros.Count)
-                {
-                    if (terceros[cont][0].Equals(idTercero.ToString()))
-                    {
-                        string[] terceroModificado = terceros[cont];
-                        terceroModificado[0] = "*" + terceroModificado[0];
-                        terceros[cont] = terceroModificado;
-                        encontre = true;
-                    }
-                    cont++;
-                }
-
-                if (!encontre)
-                {
-                    throw new Exception("El ID ingresado no corresponde a ningun tercero registrado.");
-                }
-                else
-                {
-                    foreach (string[] st in terceros)
-                    {
-                        sw.WriteLine(string.Join(",", st));
-                    }
-                }
-            }
-        }
-        public List<Tercero> ListarTerceros()
-        {
-            List<Tercero> resultado = new List<Tercero>();
-            using (StreamReader sr = new StreamReader(_path))
-            {
-                while (!sr.EndOfStream)
-                {
-                    string[] st = sr.ReadLine().Split(',');
-                    if (!st[0].Contains("*"))
-                    {
-                        /*
-                            st[0] id 
-                            st[1] dni
-                            st[2] nombre
-                            st[3] apellido
-                            st[4] aseguradora
-                            st[5] telefono
-                            st[6] siniestro
-                         */
-                        Tercero newTercero = new Tercero(st[1], st[2], st[3], st[4], st[5], st[6]);
-                        newTercero.ID = Int32.Parse(st[0]);
-                        resultado.Add(newTercero);
-                    }
-                }
-            }
-            return resultado;
-        }
+        return resultado;
     }
 }

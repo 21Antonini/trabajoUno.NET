@@ -6,7 +6,7 @@ public interface IRepoTitular
     public void AgregarTitular(Titular T);
     public void ModificarTitular(Titular T);
     public void EliminarTitular(int Id);
-    public Titular ObtenerTitular(int id);
+    //public Titular ObtenerTitular(int id);
     public List<Titular> ListarTitulares();
-    public List<Titular> ListarTitularesConVehiculos(List<Vehiculo> vehiculos);
+    //public List<Titular> ListarTitularesConVehiculos(List<Vehiculo> vehiculos);
 }

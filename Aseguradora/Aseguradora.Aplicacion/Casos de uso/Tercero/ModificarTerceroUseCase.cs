@@ -9,8 +9,8 @@ public class ModificarTerceroUseCase
     {
         _repo = repo;
     }
-    public void Ejecutar(Tercero T)
-    {
-        _repo.ModificarTercero(T);
-    }
+    //public void Ejecutar(Tercero T)
+    //{
+    //    _repo.ModificarTercero(T);
+    //}
 }

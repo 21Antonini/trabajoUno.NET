@@ -6,14 +6,13 @@ public class AgregarSiniestroUseCase
 {
     IRepoSiniestro _repoSiniestro;
     IRepoPoliza _repoPoliza;
-    public AgregarSiniestroUseCase(IRepoSiniestro repoSiniestro, IRepoPoliza repoPoliza)
+    public AgregarSiniestroUseCase(IRepoSiniestro repoSiniestro)
     {
         _repoSiniestro = repoSiniestro;
-        _repoPoliza = repoPoliza;
 
     }
-    public void Ejecutar(Siniestro S)
-    {
-        _repoSiniestro.AgregarSiniestro(S, _repoPoliza.ListarPolizas());
-    }
+    //public void Ejecutar(Siniestro S)
+    //{
+    //    _repoSiniestro.AgregarSiniestro(S);
+    //}
 }

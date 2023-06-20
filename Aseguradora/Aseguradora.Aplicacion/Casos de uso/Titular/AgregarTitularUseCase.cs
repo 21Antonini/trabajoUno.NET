@@ -9,8 +9,8 @@ public class AgregarTitularUseCase
     {
         _repo = repo;
     }
-    public void Ejecutar(Titular T)
+    public void ejecutar(Titular t)
     {
-        _repo.AgregarTitular(T);
+        _repo.AgregarTitular(t);
     }
 }

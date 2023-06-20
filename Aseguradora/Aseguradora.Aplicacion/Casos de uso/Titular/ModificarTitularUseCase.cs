@@ -9,8 +9,8 @@ public class ModificarTitularUseCase
     {
         _repo = repo;
     }
-    public void Ejecutar(Titular T)
-    {
-        _repo.ModificarTitular(T);
-    }
+    //public void Ejecutar(Titular T)
+    //{
+    //    _repo.ModificarTitular(T);
+    //}
 }
