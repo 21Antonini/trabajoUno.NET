@@ -1,16 +1,18 @@
 using Aseguradora.Aplicacion.Entidades;
 using Aseguradora.Aplicacion.Interfaces;
 
-namespace Aseguradora.Aplicacion;
-public class AgregarPolizaUseCase
+namespace Aseguradora.Aplicacion.UserCase
 {
-    IRepoPoliza _repo;
-    public AgregarPolizaUseCase(IRepoPoliza repo)
+    public class AgregarPolizaUseCase
     {
-        _repo = repo;
-    }
-    public void Ejecutar(Poliza P)
-    {
-        _repo.AgregarPoliza(P);
+        IRepoPoliza _repo;
+        public AgregarPolizaUseCase(IRepoPoliza repo)
+        {
+            _repo = repo;
+        }
+        public void Ejecutar(Poliza P)
+        {
+            _repo.AgregarPoliza(P);
+        }
     }
 }

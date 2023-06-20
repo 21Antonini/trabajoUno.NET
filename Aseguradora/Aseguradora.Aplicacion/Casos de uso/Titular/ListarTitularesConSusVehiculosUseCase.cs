@@ -1,7 +1,7 @@
 ﻿using Aseguradora.Aplicacion.Interfaces;
 using Aseguradora.Aplicacion.Entidades;
 
-namespace Aseguradora.Aplicacion
+namespace Aseguradora.Aplicacion.UserCase
 {
     public class ListarTitularesConSusVehiculosUseCase
     {
@@ -14,9 +14,9 @@ namespace Aseguradora.Aplicacion
             _repoVehiculo = repoVehiculo;
         }
 
-        public List<Titular> Ejecutar()
-        {
-            return _repoTitular.ListarTitularesConVehiculos(_repoVehiculo.ListarVehiculos());
-        }
+        //public List<Titular> Ejecutar()
+        //{
+        //    return _repoTitular.ListarTitularesConVehiculos(_repoVehiculo.ListarVehiculos());
+        //}
     }
 }

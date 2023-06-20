@@ -1,6 +1,6 @@
 @page "/listadotitulares"
 @inject ListarTitularesUseCase ListarTitularesUseCase
-@inject EliminarTitularesUseCase EliminarTitularesUseCase
+@inject EliminarTitularUseCase EliminarTitularUseCase
 @inject NavigationManager Navegador
 
 <DialogoConfirmacion @ref="dialogo" OnConfirmado="Eliminar"/>
@@ -18,7 +18,7 @@
         @foreach (var t in _lista)
         {
             <tr>
-                <td>@t.Id</td>
+                <td>@t.ID</td>
                 <td>@t.Nombre</td>
                 <td>@t.Apellido</td>
                 <td>@t.DNI</td>
@@ -44,7 +44,7 @@
     }
 
     DialogoConfirmacion dialogo = null!;
-    Titular? _titularParaEliminar = null;
+    Titular _titularParaEliminar = null;
     private void ConfirmarEliminacion(Titular t)
     {
         _titularParaEliminar = t;

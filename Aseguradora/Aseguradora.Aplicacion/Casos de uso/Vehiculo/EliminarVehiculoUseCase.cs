@@ -1,15 +1,17 @@
 using Aseguradora.Aplicacion.Interfaces;
 
-namespace Aseguradora.Aplicacion;
-public class EliminarVehiculoUseCase
+namespace Aseguradora.Aplicacion.UserCase
 {
-    IRepoVehiculo _repo;
-    public EliminarVehiculoUseCase(IRepoVehiculo repo)
+    public class EliminarVehiculoUseCase
     {
-        _repo = repo;
-    }
-    public void Ejecutar(int ID)
-    {
-        _repo.EliminarVehiculo(ID);
+        IRepoVehiculo _repo;
+        public EliminarVehiculoUseCase(IRepoVehiculo repo)
+        {
+            _repo = repo;
+        }
+        public void Ejecutar(int ID)
+        {
+            _repo.EliminarVehiculo(ID);
+        }
     }
 }

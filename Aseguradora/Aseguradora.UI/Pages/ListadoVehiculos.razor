@@ -1,6 +1,6 @@
 @page "/listadovehiculos"
 @inject ListarVehiculosUseCase ListarVehiculosUseCase
-@inject EliminarVehiculosUseCase EliminarVehiculosUseCase
+@inject EliminarVehiculoUseCase EliminarVehiculoUseCase
 @inject NavigationManager Navegador
 
 <DialogoConfirmacion @ref="dialogo" OnConfirmado="Eliminar"/>
@@ -49,7 +49,7 @@
     Vehiculo? _vehiculoParaEliminar = null;
     private void ConfirmarEliminacion(Vehiculo v)
     {
-        _vehiculoParaEliminar = t;
+        _vehiculoParaEliminar = v;
         dialogo.Mensaje = $"¿Desea eliminar al vehiculo {v.Marca} {v.Fabricacion} {v.Dominio}?";
         dialogo.Mostrar();
     }   //Dialogo de confirmacion para eliminar vehiculos

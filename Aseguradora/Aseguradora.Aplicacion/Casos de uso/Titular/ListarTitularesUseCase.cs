@@ -1,16 +1,18 @@
 using Aseguradora.Aplicacion.Entidades;
 using Aseguradora.Aplicacion.Interfaces;
 
-namespace Aseguradora.Aplicacion;
-public class ListarTitularesUseCase
+namespace Aseguradora.Aplicacion.UserCase
 {
-    IRepoTitular _repo;
-    public ListarTitularesUseCase(IRepoTitular repo)
+    public class ListarTitularesUseCase
     {
-        _repo = repo;
-    }
-    public List<Titular> Ejecutar()
-    {
-        return _repo.ListarTitulares();
+        IRepoTitular _repo;
+        public ListarTitularesUseCase(IRepoTitular repo)
+        {
+            _repo = repo;
+        }
+        public List<Titular> Ejecutar()
+        {
+            return _repo.ListarTitulares();
+        }
     }
 }

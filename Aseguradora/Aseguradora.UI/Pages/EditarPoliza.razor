@@ -2,8 +2,9 @@
 @inject NavigationManager Navegador;
 @inject AgregarPolizaUseCase AgregarPolizaUseCase
 @inject ModificarPolizaUseCase ModificarPolizaUseCase
+@inject ObtenerPolizaUseCase ObtenerPolizaUseCase
 
-<input placeholder="ID del vehículo asegurado" @bind="_poliza.IDVehiculoAsegurado" class="form-control">
+<input placeholder="ID del vehículo asegurado" @bind="_poliza.VehiculoId" class="form-control">
 <input placeholder="Valor asegurado" @bind="_poliza.valorAsegurado" class="form-control">
 <input placeholder="Franquicia" @bind="_poliza.Franquicia" class="form-control">
 <input placeholder="Cobertura" @bind="_poliza.Cobertura" class="form-control">
@@ -20,7 +21,7 @@ else
    <h3>Modificando a la póliza "@_poliza.ID"</h3>
 } 
 
-<input placeholder="ID del vehículo asegurado" @bind="_poliza.IDVehiculoAsegurado" class="form-control">
+<input placeholder="ID del vehículo asegurado" @bind="_poliza.VehiculoId" class="form-control">
 <input placeholder="Valor asegurado" @bind="_poliza.valorAsegurado" class="form-control">
 <input placeholder="Franquicia" @bind="_poliza.Franquicia" class="form-control">
 <input placeholder="Cobertura" @bind="_poliza.Cobertura" class="form-control">
@@ -39,8 +40,8 @@ else
             var p_hallada = ObtenerPolizaUseCase.Ejecutar(ID.Value);
             if (p_hallada != null)
             {
-                _vehiculo = v_hallado;
-                _esNuevo = false;
+                _poliza = p_hallada;
+                _esNuevaPoliza = false;
             }
         }
     }

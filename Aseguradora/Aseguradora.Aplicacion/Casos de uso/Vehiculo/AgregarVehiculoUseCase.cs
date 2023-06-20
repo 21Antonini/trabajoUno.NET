@@ -1,16 +1,18 @@
 using Aseguradora.Aplicacion.Entidades;
 using Aseguradora.Aplicacion.Interfaces;
 
-namespace Aseguradora.Aplicacion;
-public class AgregarVehiculoUseCase
+namespace Aseguradora.Aplicacion.UserCase
 {
-    IRepoVehiculo _repo;
-    public AgregarVehiculoUseCase(IRepoVehiculo repo)
+    public class AgregarVehiculoUseCase
     {
-        _repo = repo;
-    }
-    public void Ejecutar(Vehiculo V)
-    {
-        _repo.AgregarVehiculo(V);
+        IRepoVehiculo _repo;
+        public AgregarVehiculoUseCase(IRepoVehiculo repo)
+        {
+            _repo = repo;
+        }
+        public void Ejecutar(Vehiculo V)
+        {
+            _repo.AgregarVehiculo(V);
+        }
     }
 }

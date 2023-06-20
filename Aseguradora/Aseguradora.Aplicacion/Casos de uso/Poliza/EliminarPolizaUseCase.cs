@@ -1,15 +1,17 @@
 using Aseguradora.Aplicacion.Interfaces;
 
-namespace Aseguradora.Aplicacion;
-public class EliminarPolizaUseCase
+namespace Aseguradora.Aplicacion.UserCase
 {
-    IRepoPoliza _repo;
-    public EliminarPolizaUseCase(IRepoPoliza repo)
+    public class EliminarPolizaUseCase
     {
-        _repo = repo;
-    }
-    public void Ejecutar(int ID)
-    {
-        _repo.EliminarPoliza(ID);
+        IRepoPoliza _repo;
+        public EliminarPolizaUseCase(IRepoPoliza repo)
+        {
+            _repo = repo;
+        }
+        public void Ejecutar(int ID)
+        {
+            _repo.EliminarPoliza(ID);
+        }
     }
 }
