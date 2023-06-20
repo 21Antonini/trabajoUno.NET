@@ -3,7 +3,7 @@
 @inject EliminarTerceroUseCase EliminarTerceroUseCase
 @inject NavigationManager Navegador
 
-<DialogoConfirmacion @ref="dialogo" OnConfirmado="Eliminar"/>
+<DialogoConfirmacion @ref?="dialogo" OnConfirmado="Eliminar"/>
 <table class="table">
     <thead>
         <tr>
@@ -49,13 +49,13 @@
         _lista = ListarTercerosUseCase.Ejecutar();
     }
 
-    DialogoConfirmacion dialogo = null!;
+    DialogoConfirmacion dialogo = new DialogoConfirmacion();
     Tercero? _terceroParaEliminar = null;
     private void ConfirmarEliminacion(Tercero t)
     {
         _terceroParaEliminar = t;
-        dialogo.Mensaje = $"¿Desea eliminar al tercero {t.Nombre} {t.Apellido} {t.DNI}?";
-        dialogo.Mostrar();
+        string Mensaje = $"¿Desea eliminar al tercero {t.Nombre} {t.Apellido} {t.DNI}?";
+        dialogo.Mostrar(Mensaje);
     }   //Dialogo de confirmacion para eliminar terceros
     private void Eliminar()
     {

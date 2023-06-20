@@ -5,7 +5,6 @@ namespace Aseguradora.Aplicacion.UserCase{
 public class AgregarSiniestroUseCase
 {
     IRepoSiniestro _repoSiniestro;
-    IRepoPoliza _repoPoliza;
     public AgregarSiniestroUseCase(IRepoSiniestro repoSiniestro)
     {
         _repoSiniestro = repoSiniestro;

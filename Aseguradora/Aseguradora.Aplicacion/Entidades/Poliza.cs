@@ -4,9 +4,9 @@ public class Poliza
     public List<Siniestro> listaSiniestro { get; set; } = new List<Siniestro>();
     public int ID { get; set; }
     public int VehiculoId { get; set; }
-    public double valorAsegurado { get; set; }
-    public string Franquicia { get; set; }
-    public string Cobertura { get; set; }
+    public double? valorAsegurado { get; set; }
+    public string? Franquicia { get; set; }
+    public string? Cobertura { get; set; }
     public DateTime VigenteDesde { get; set; }
     public DateTime VigenteHasta { get; set; }
 
