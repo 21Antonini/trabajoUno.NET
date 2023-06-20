@@ -1,8 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Aseguradora"
+    "\\Aseguradora",
+    "\\Aseguradora\\Aseguradora.Aplicacion",
+    "\\Aseguradora\\Aseguradora.Aplicacion\\Entidades",
+    "\\Aseguradora\\Aseguradora.UI",
+    "\\Aseguradora\\Aseguradora.UI\\Pages",
+    "\\Aseguradora\\Aseguradora.UI\\Shared"
   ],
-  "SelectedNode": "\\Aseguradora\\Aseguradora.sln",
+  "SelectedNode": "\\Aseguradora\\Aseguradora.Aplicacion\\Entidades\\Titular.cs",
   "PreviewInSolutionExplorer": false
 }

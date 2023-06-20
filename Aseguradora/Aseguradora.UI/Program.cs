@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using Aseguradora.UI.Data;
+//using Aseguradora.UI.Data;
 using Aseguradora.Aplicacion.UserCase;
 using Aseguradora.Aplicacion.Interfaces;
 using Aseguradora.Aplicacion.Entidades;
@@ -15,7 +15,7 @@ using (var db = new AseguradoraContext())
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+//builder.Services.AddSingleton<WeatherForecastService>();
 
 builder.Services.AddSingleton<IRepoPoliza, RepoPoliza>();
 builder.Services.AddSingleton<IRepoSiniestro, RepoSiniestro>();
