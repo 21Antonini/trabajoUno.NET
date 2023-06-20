@@ -1,4 +1,4 @@
-﻿@page "/fetchdata"
+﻿@*@page "/fetchdata"
 @using Aseguradora.UI.Data
 @inject WeatherForecastService ForecastService
 
@@ -45,3 +45,4 @@ else
         forecasts = await ForecastService.GetForecastAsync(DateOnly.FromDateTime(DateTime.Now));
     }
 }
+*@
