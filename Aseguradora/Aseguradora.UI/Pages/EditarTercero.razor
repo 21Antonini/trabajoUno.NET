@@ -2,13 +2,14 @@
 @inject NavigationManager Navegador;
 @inject AgregarTerceroUseCase AgregarTerceroUseCase
 @inject ModificarTerceroUseCase ModificarTerceroUseCase
+@inject ObtenerTerceroUseCase ObtenerTerceroUseCase
 
 <input placeholder="Nombre" @bind="_tercero.Nombre" class="form-control">
 <input placeholder="Apellido" @bind="_tercero.Apellido" class="form-control">
 <input placeholder="DNI" @bind="_tercero.DNI" class="form-control">
 <input placeholder="Telefono" @bind="_tercero.Telefono" class="form-control">
 <input placeholder="Aseguradora" @bind="_tercero.Aseguradora" class="form-control">
-<input placeholder="Siniestro" @bind="_tercero.Siniestro" class="form-control">
+<input placeholder="Siniestro" @bind="_tercero.SiniestroID" class="form-control">
 <button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
 
 @if (_esNuevo)
@@ -25,7 +26,7 @@ else
 <input placeholder="DNI" @bind="_tercero.DNI" class="form-control">
 <input placeholder="Telefono" @bind="_tercero.Telefono" class="form-control">
 <input placeholder="Aseguradora" @bind="_tercero.Aseguradora" class="form-control">
-<input placeholder="Siniestro" @bind="_tercero.Siniestro" class="form-control">
+<input placeholder="Siniestro" @bind="_tercero.SiniestroID" class="form-control">
 <button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
 
 

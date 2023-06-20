@@ -1,16 +1,18 @@
 using Aseguradora.Aplicacion.Entidades;
 using Aseguradora.Aplicacion.Interfaces;
 
-namespace Aseguradora.Aplicacion;
-public class AgregarTitularUseCase
+namespace Aseguradora.Aplicacion.UserCase
 {
-    IRepoTitular _repo;
-    public AgregarTitularUseCase(IRepoTitular repo)
+    public class AgregarTitularUseCase
     {
-        _repo = repo;
-    }
-    public void ejecutar(Titular t)
-    {
-        _repo.AgregarTitular(t);
+        IRepoTitular _repo;
+        public AgregarTitularUseCase(IRepoTitular repo)
+        {
+            _repo = repo;
+        }
+        public void Ejecutar(Titular t)
+        {
+            _repo.AgregarTitular(t);
+        }
     }
 }

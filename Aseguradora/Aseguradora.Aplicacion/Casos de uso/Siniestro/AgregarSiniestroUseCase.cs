@@ -1,7 +1,7 @@
 using Aseguradora.Aplicacion.Entidades;
 using Aseguradora.Aplicacion.Interfaces;
 
-namespace Aseguradora.Aplicacion;
+namespace Aseguradora.Aplicacion.UserCase{
 public class AgregarSiniestroUseCase
 {
     IRepoSiniestro _repoSiniestro;
@@ -11,8 +11,9 @@ public class AgregarSiniestroUseCase
         _repoSiniestro = repoSiniestro;
 
     }
-    //public void Ejecutar(Siniestro S)
-    //{
-    //    _repoSiniestro.AgregarSiniestro(S);
-    //}
+    public void Ejecutar(Siniestro S)
+    {
+        _repoSiniestro.AgregarSiniestro(S);
+    }
+}
 }

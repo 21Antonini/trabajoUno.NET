@@ -3,7 +3,7 @@ namespace Aseguradora.Aplicacion.Entidades;
 public class Siniestro
 {
     public List<Tercero> listaTercero { get; set; } = new List<Tercero>();
-    public int ID { get; set; } = -1;
+    public int ID { get; set; }
     public int PolizaId { get; set; }
     public DateTime FechaCargaSistema { get; set; }
     public DateTime FechaOcurrencia { get; set; }

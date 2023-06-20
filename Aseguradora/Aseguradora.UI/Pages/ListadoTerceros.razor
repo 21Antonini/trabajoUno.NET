@@ -1,6 +1,6 @@
 @page "/listadoterceros"
 @inject ListarTercerosUseCase ListarTercerosUseCase
-@inject EliminarTercerosUseCase EliminarTercerosUseCase
+@inject EliminarTerceroUseCase EliminarTerceroUseCase
 @inject NavigationManager Navegador
 
 <DialogoConfirmacion @ref="dialogo" OnConfirmado="Eliminar"/>
@@ -27,7 +27,7 @@
                 <td>@t.Apellido</td>
                 <td>@t.Telefono</td>
                 <td>@t.Aseguradora</td>
-                <td>@t.Siniestro</td>
+                <td>@t.SiniestroID</td>
                 <td>
                     <button class="btn btn-primary">
                         <span class="oi oi-pencil"></span>

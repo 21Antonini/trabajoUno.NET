@@ -49,6 +49,21 @@ public class RepoPolizaTXT : IRepoPoliza
         }
     }
 
+    public Poliza ObtenerPoliza(int idPoliza)
+    {
+        Poliza resultado = new Poliza();
+        using (var db = new AseguradoraContext())
+        {
+            var t = db.Poliza.Where(n => n.ID == idPoliza).SingleOrDefault();
+            if (t != null)
+            {
+                resultado = t;
+            }
+            else { throw new Exception("El Id ingresado no corresponde a ninguna poliza registrada."); }
+        }
+        return resultado;
+    }
+
     public List<Poliza> ListarPolizas()
     {
         List<Poliza> resultado = new List<Poliza>();

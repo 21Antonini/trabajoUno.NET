@@ -1,7 +1,7 @@
 ﻿using Aseguradora.Aplicacion.Interfaces;
 using Aseguradora.Aplicacion.Entidades;
 
-namespace Aseguradora.Aplicacion
+namespace Aseguradora.Aplicacion.UserCase
 {
     public class ListarTitularesConSusVehiculosUseCase
     {

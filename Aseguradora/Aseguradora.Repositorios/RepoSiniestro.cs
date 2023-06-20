@@ -58,6 +58,20 @@ public class RepoSiniestroTXT : IRepoSiniestro
             else { throw new Exception("El Siniestro ingresado no corresponde a ninguno registrado."); };
         }
     }
+    public Siniestro ObtenerSiniestro(int idSiniestro)
+    {
+        Siniestro resultado = new Siniestro();
+        using (var db = new AseguradoraContext())
+        {
+            var t = db.Siniestro.Where(n => n.ID == idSiniestro).SingleOrDefault();
+            if (t != null)
+            {
+                resultado = t;
+            }
+            else { throw new Exception("El Id ingresado no corresponde a ningun siniestro registrado."); }
+        }
+        return resultado;
+    }
 
 
     public List<Siniestro> ListarSiniestros()

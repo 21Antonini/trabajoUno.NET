@@ -54,6 +54,20 @@ public class RepoTercero : IRepoTercero
             else { throw new Exception("El Tercero ingresado no corresponde a ninguno registrado."); };
         }
     }
+    public Tercero ObtenerTercero(int idTercero)
+    {
+        Tercero resultado = new Tercero();
+        using (var db = new AseguradoraContext())
+        {
+            var t = db.Tercero.Where(n => n.ID == idTercero).SingleOrDefault();
+            if (t != null)
+            {
+                resultado = t;
+            }
+            else { throw new Exception("El Id ingresado no corresponde a ningun tercero registrado."); }
+        }
+        return resultado;
+    }
 
     public List<Tercero> ListarTerceros()
     {

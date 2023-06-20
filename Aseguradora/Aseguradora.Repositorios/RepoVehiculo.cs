@@ -48,6 +48,20 @@ public class RepoVehiculoTXT : IRepoVehiculo
         }
     }
 
+    public Vehiculo ObtenerVehiculo(int idVehiculo)
+    {
+        Vehiculo resultado = new Vehiculo();
+        using (var db = new AseguradoraContext())
+        {
+            var veh = db.Vehiculo.Where(n => n.ID == idVehiculo).SingleOrDefault();
+            if (veh != null)
+            {
+                resultado = veh;
+            }
+            else { throw new Exception("El Id ingresado no corresponde a ningun vehiculo registrado."); }
+        }
+        return resultado;
+    }
 
     public List<Vehiculo> ListarVehiculos()
     {

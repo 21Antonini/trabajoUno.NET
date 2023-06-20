@@ -1,12 +1,14 @@
-﻿using Aseguradora.Repositorios;
-using Aseguradora.Aplicacion;
-using Aseguradora.Aplicacion.Entidades;
-using Microsoft.EntityFrameworkCore;
+﻿
 
-using (var db = new AseguradoraContext())
-{
-    db.Database.EnsureCreated();
-}
+//using Aseguradora.Repositorios;
+//using Aseguradora.Aplicacion;
+//using Aseguradora.Aplicacion.Entidades;
+//using Microsoft.EntityFrameworkCore;
+
+//using (var db = new AseguradoraContext())
+//{
+//    db.Database.EnsureCreated();
+//}
 
 
 //remover el comentario de esto
@@ -73,11 +75,11 @@ e => e.ID == 3).SingleOrDefault();
 
 
 
-RepoTitularTXT repoTitular = new RepoTitularTXT();
-AgregarTitularUseCase agregarTitular = new AgregarTitularUseCase(repoTitular);
-//ListarTitularesUseCase listarTitulares = new ListarTitularesUseCase(repoTitular);
-//ModificarTitularUseCase modificarTitular = new ModificarTitularUseCase(repoTitular);
-EliminarTitularUseCase eliminarTitular = new EliminarTitularUseCase(repoTitular);
+//RepoTitularTXT repoTitular = new RepoTitularTXT();
+//AgregarTitularUseCase agregarTitular = new AgregarTitularUseCase(repoTitular);
+////ListarTitularesUseCase listarTitulares = new ListarTitularesUseCase(repoTitular);
+////ModificarTitularUseCase modificarTitular = new ModificarTitularUseCase(repoTitular);
+//EliminarTitularUseCase eliminarTitular = new EliminarTitularUseCase(repoTitular);
 
 //Titular nuevo = new Titular()
 //{

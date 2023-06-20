@@ -64,6 +64,20 @@ public class RepoTitularTXT : IRepoTitular
         return resultado;
     }
 
+    public Titular ObtenerTitular(int idTitular)
+    {
+        Titular resultado = new Titular();
+        using (var db = new AseguradoraContext()) 
+        {
+            var titu = db.Titular.Where(n => n.ID == idTitular).SingleOrDefault();
+            if (titu != null)
+            {
+                resultado = titu;
+            }
+            else {throw new Exception("El Id ingresado no corresponde a ningun titular registrado."); }
+        }
+        return resultado;
+    }
 
     //public List<Titular> ListarTitularesConVehiculos(List<Vehiculo> vehiculos)
     //{

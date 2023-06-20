@@ -1,16 +1,18 @@
 using Aseguradora.Aplicacion.Entidades;
 using Aseguradora.Aplicacion.Interfaces;
 
-namespace Aseguradora.Aplicacion;
-public class ModificarPolizaUseCase
+namespace Aseguradora.Aplicacion.UserCase
 {
-    IRepoPoliza _repo;
-    public ModificarPolizaUseCase(IRepoPoliza repo)
+    public class ModificarPolizaUseCase
     {
-        _repo = repo;
+        IRepoPoliza _repo;
+        public ModificarPolizaUseCase(IRepoPoliza repo)
+        {
+            _repo = repo;
+        }
+        public void Ejecutar(Poliza P)
+        {
+            _repo.ModificarPoliza(P);
+        }
     }
-    //public void Ejecutar(Poliza P)
-    //{
-    //    _repo.ModificarPoliza(P);
-    //}
 }
