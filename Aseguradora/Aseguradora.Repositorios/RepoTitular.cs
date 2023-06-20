@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 
 namespace Aseguradora.Repositorios;
-public class RepoTitularTXT : IRepoTitular
+public class RepoTitular : IRepoTitular
 {
     public void AgregarTitular(Titular titular)
     {
@@ -79,23 +79,17 @@ public class RepoTitularTXT : IRepoTitular
         return resultado;
     }
 
-    //public List<Titular> ListarTitularesConVehiculos(List<Vehiculo> vehiculos)
-    //{
-    //    List<Titular> titularesConVehiculos = new List<Titular>();
-    //    List<Titular> titulares = ListarTitulares();
-    //    foreach (Titular titular in titulares)
-    //    {
-    //        foreach (Vehiculo vehiculo in vehiculos)
-    //        {
-    //            if (vehiculo.idTitular == titular.ID)
-    //            {
-    //                titular.listaVehiculos.Add(vehiculo);
-    //            }
-    //        }
-    //        titularesConVehiculos.Add(titular);
-    //    }
-    //    return titularesConVehiculos;
-    //}
+    public List<Titular> ListarTitularesConVehiculos(List<Vehiculo> vehiculos)
+    {
+        List<Titular> titularesConVehiculos = new List<Titular>();
+        List<Titular> titulares = ListarTitulares();
+        using (var db = new AseguradoraContext())
+        {
+            titularesConVehiculos = db.Titular.Include(t => t.listaVehiculos).ToList();
+        }
+            
+        return titularesConVehiculos;
+    }
 
 
 }

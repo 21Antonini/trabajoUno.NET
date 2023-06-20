@@ -17,11 +17,11 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 
-builder.Services.AddSingleton<IRepoPoliza, RepoPolizaTXT>();
-builder.Services.AddSingleton<IRepoSiniestro, RepoSiniestroTXT>();
+builder.Services.AddSingleton<IRepoPoliza, RepoPoliza>();
+builder.Services.AddSingleton<IRepoSiniestro, RepoSiniestro>();
 builder.Services.AddSingleton<IRepoTercero, RepoTercero>();
-builder.Services.AddSingleton<IRepoTitular, RepoTitularTXT>();
-builder.Services.AddSingleton<IRepoVehiculo, RepoVehiculoTXT>();
+builder.Services.AddSingleton<IRepoTitular, RepoTitular>();
+builder.Services.AddSingleton<IRepoVehiculo, RepoVehiculo>();
 
 builder.Services.AddTransient<AgregarPolizaUseCase>();
 builder.Services.AddTransient<ListarPolizasUseCase>();
@@ -33,7 +33,7 @@ builder.Services.AddTransient<ListarTitularesUseCase>();
 builder.Services.AddTransient<EliminarTitularUseCase>();
 builder.Services.AddTransient<ModificarTitularUseCase>();
 builder.Services.AddTransient<ObtenerTitularUseCase>();
-//builder.Services.AddTransient<ListarTitularesConSusVehiculosUseCase>();
+builder.Services.AddTransient<ListarTitularesConSusVehiculosUseCase>();
 builder.Services.AddTransient<AgregarVehiculoUseCase>();
 builder.Services.AddTransient<ListarVehiculosUseCase>();
 builder.Services.AddTransient<EliminarVehiculoUseCase>();

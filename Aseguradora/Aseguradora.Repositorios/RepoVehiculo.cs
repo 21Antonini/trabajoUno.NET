@@ -2,7 +2,7 @@ using Aseguradora.Aplicacion.Entidades;
 using Aseguradora.Aplicacion.Interfaces;
 
 namespace Aseguradora.Repositorios;
-public class RepoVehiculoTXT : IRepoVehiculo
+public class RepoVehiculo : IRepoVehiculo
 {
     public void AgregarVehiculo(Vehiculo vehiculo)
     {
