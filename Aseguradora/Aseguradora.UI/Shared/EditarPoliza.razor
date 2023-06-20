@@ -21,14 +21,6 @@ else
    <h3>Modificando a la póliza "@_poliza.ID"</h3>
 } 
 
-<input placeholder="ID del vehículo asegurado" @bind="_poliza.VehiculoId" class="form-control">
-<input placeholder="Valor asegurado" @bind="_poliza.valorAsegurado" class="form-control">
-<input placeholder="Franquicia" @bind="_poliza.Franquicia" class="form-control">
-<input placeholder="Cobertura" @bind="_poliza.Cobertura" class="form-control">
-<input placeholder="Vigente desde" @bind="_poliza.VigenteDesde" class="form-control">
-<input placeholder="Vigente Hasta" @bind="_poliza.VigenteHasta" class="form-control">
-<button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
-
 @code {
     Poliza _poliza = new Poliza();
     [Parameter] public int? ID { get; set; }
