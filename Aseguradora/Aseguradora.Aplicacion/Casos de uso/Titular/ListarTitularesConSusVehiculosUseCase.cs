@@ -14,9 +14,9 @@ namespace Aseguradora.Aplicacion.UserCase
             _repoVehiculo = repoVehiculo;
         }
 
-        //public List<Titular> Ejecutar()
-        //{
-        //    return _repoTitular.ListarTitularesConVehiculos(_repoVehiculo.ListarVehiculos());
-        //}
+        public List<Titular> Ejecutar()
+        {
+            return _repoTitular.ListarTitularesConVehiculos(_repoVehiculo.ListarVehiculos());
+        }
     }
 }
