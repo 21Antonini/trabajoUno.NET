@@ -60,13 +60,13 @@
     {
         _lista = ListarTitularesConSusVehiculosUseCase.Ejecutar();
     }
-    DialogoConfirmacion dialogo = null!;
-    Titular _titularParaEliminar = null;
+    DialogoConfirmacion dialogo = new DialogoConfirmacion();
+    Titular? _titularParaEliminar;
     private void ConfirmarEliminacion(Titular t)
     {
         _titularParaEliminar = t;
-        dialogo.Mensaje = $"¿Desea eliminar al titular {t.Nombre} {t.Apellido} {t.DNI}?";
-        dialogo.Mostrar();
+        String Mensaje = $"¿Desea eliminar al titular {t.Nombre} {t.Apellido} {t.DNI}?";
+        dialogo.Mostrar(Mensaje);
     }   //Dialogo de confirmacion para eliminar titulares
     private void Eliminar()
     {
