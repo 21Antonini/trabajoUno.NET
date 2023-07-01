@@ -2,7 +2,7 @@ using Aseguradora.Aplicacion.Entidades;
 using Aseguradora.Aplicacion.Interfaces;
 
 namespace Aseguradora.Repositorios;
-public class RepoPolizaTXT : IRepoPoliza
+public class RepoPoliza : IRepoPoliza
 {
     public void AgregarPoliza(Poliza poliza)
     {

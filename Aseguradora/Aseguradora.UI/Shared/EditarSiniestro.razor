@@ -19,13 +19,6 @@ else
    <h3>Modificando al Siniestro "@_siniestro.DescripcionDelHecho"</h3>
 } 
 
-<input placeholder="ID de la poliza" @bind="_siniestro.PolizaId" class="form-control">
-<input placeholder="Fecha de ocurrencia" @bind="_siniestro.FechaOcurrencia" class="form-control">
-<input placeholder="Dirección del hecho" @bind="_siniestro.DireccionDelHecho" class="form-control">
-<input placeholder="Descripción" @bind="_siniestro.DescripcionDelHecho" class="form-control">
-<button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
-
-
 @code {
     Siniestro _siniestro = new Siniestro();
     [Parameter] public int? ID { get; set; }

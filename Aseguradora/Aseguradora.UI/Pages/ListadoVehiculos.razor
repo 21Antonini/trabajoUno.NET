@@ -45,13 +45,13 @@
         _lista = ListarVehiculosUseCase.Ejecutar();
     }
 
-    DialogoConfirmacion dialogo = null!;
+    DialogoConfirmacion dialogo = new DialogoConfirmacion();
     Vehiculo? _vehiculoParaEliminar = null;
     private void ConfirmarEliminacion(Vehiculo v)
     {
         _vehiculoParaEliminar = v;
-        dialogo.Mensaje = $"¿Desea eliminar al vehiculo {v.Marca} {v.Fabricacion} {v.Dominio}?";
-        dialogo.Mostrar();
+        string Mensaje = $"¿Desea eliminar al vehiculo {v.Marca} {v.Fabricacion} {v.Dominio}?";
+        dialogo.Mostrar(Mensaje);
     }   //Dialogo de confirmacion para eliminar vehiculos
     private void Eliminar()
     {

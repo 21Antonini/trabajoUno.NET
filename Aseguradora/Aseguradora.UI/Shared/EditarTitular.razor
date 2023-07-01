@@ -7,6 +7,9 @@
 <input placeholder="Nombre" @bind="_titular.Nombre" class="form-control">
 <input placeholder="Apellido" @bind="_titular.Apellido" class="form-control">
 <input placeholder="DNI" @bind="_titular.DNI" class="form-control">
+<input placeholder="Telefono" @bind="_titular.Telefono" class="form-control">
+<input placeholder="Direccion" @bind="_titular.Direccion" class="form-control">
+<input placeholder="Mail" @bind="_titular.Mail" class="form-control">
 <button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
 
 @if (_esNuevo)
@@ -17,10 +20,6 @@ else
 {
    <h3>Modificando al Titular "@_titular.Nombre"</h3>
 } 
-
-<input placeholder="Nombre" @bind="_titular.Nombre" class="form-control">
-<input placeholder="Apellido" @bind="_titular.Apellido" class="form-control">
-<button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
 
 @code {
     Titular _titular = new Titular();

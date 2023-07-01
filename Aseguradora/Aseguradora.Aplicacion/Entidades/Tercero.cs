@@ -1,7 +1,7 @@
 namespace Aseguradora.Aplicacion.Entidades;
 public class Tercero : Persona
 {
-    public int ID { get; set; }
+    //public int ID { get; set; }
     public string? Telefono { set; get; }
     public string? Aseguradora { set; get; }
     public int SiniestroID { set; get; }

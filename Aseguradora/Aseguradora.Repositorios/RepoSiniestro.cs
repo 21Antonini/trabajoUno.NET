@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Aseguradora.Repositorios;
-public class RepoSiniestroTXT : IRepoSiniestro
+public class RepoSiniestro : IRepoSiniestro
 {
     public void AgregarSiniestro(Siniestro siniestro)
     {

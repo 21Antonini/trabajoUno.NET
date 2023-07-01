@@ -21,15 +21,6 @@ else
    <h3>Modificando al Tercero "@_tercero.Nombre"</h3>
 } 
 
-<input placeholder="Nombre" @bind="_tercero.Nombre" class="form-control">
-<input placeholder="Apellido" @bind="_tercero.Apellido" class="form-control">
-<input placeholder="DNI" @bind="_tercero.DNI" class="form-control">
-<input placeholder="Telefono" @bind="_tercero.Telefono" class="form-control">
-<input placeholder="Aseguradora" @bind="_tercero.Aseguradora" class="form-control">
-<input placeholder="Siniestro" @bind="_tercero.SiniestroID" class="form-control">
-<button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
-
-
 @code {
     Tercero _tercero = new Tercero();
     [Parameter] public int? ID { get; set; }

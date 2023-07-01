@@ -48,13 +48,13 @@
         _lista = ListarPolizasUseCase.Ejecutar();
     }
 
-    DialogoConfirmacion dialogo = null!;
+    DialogoConfirmacion dialogo = new DialogoConfirmacion();
     Poliza? _polizaParaEliminar = null;
     private void ConfirmarEliminacion(Poliza p)
     {
         _polizaParaEliminar = p;
-        dialogo.Mensaje = $"¿Desea eliminar la poliza del vehiculo {p.VehiculoId} Vigente desde: {p.VigenteDesde} Hasta: {p.VigenteHasta}?";
-        dialogo.Mostrar();
+        string Mensaje = $"¿Desea eliminar la poliza del vehiculo {p.VehiculoId} Vigente desde: {p.VigenteDesde} Hasta: {p.VigenteHasta}?";
+        dialogo.Mostrar(Mensaje);
     }   //Dialogo de confirmacion para eliminar polizas
     private void Eliminar()
     {
