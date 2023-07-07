@@ -9,12 +9,11 @@ using System.Threading.Tasks;
 namespace Aseguradora.Repositorios;
 public class RepoSiniestro : IRepoSiniestro
 {
-    public void AgregarSiniestro(Siniestro siniestro)
+    public void AgregarSiniestro(Siniestro siniestro, Poliza poliza)
     {
         using (var db = new AseguradoraContext())
         {
-
-            var poliza = db.Poliza.Where(p => p.ID == siniestro.PolizaId).SingleOrDefault();
+            //var poliza = db.Poliza.Where(p => p.ID == siniestro.PolizaId).SingleOrDefault();
             if (poliza != null)
             {
                 if ((siniestro.FechaOcurrencia >= poliza.VigenteDesde) && (siniestro.FechaOcurrencia <= poliza.VigenteHasta))

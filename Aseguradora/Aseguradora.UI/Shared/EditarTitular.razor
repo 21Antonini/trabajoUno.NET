@@ -4,13 +4,22 @@
 @inject ModificarTitularUseCase ModificarTitularUseCase
 @inject ObtenerTitularUseCase ObtenerTitularUseCase
 
-<input placeholder="Nombre" @bind="_titular.Nombre" class="form-control">
-<input placeholder="Apellido" @bind="_titular.Apellido" class="form-control">
-<input placeholder="DNI" @bind="_titular.DNI" class="form-control">
-<input placeholder="Telefono" @bind="_titular.Telefono" class="form-control">
-<input placeholder="Direccion" @bind="_titular.Direccion" class="form-control">
-<input placeholder="Mail" @bind="_titular.Mail" class="form-control">
+
+<form>
+<label for="Nombre">Nombre</label>
+<input placeholder="Nombre" id="Nombre" @bind="_titular.Nombre" class="form-control">
+<label for="Apellido">Apellido</label>
+<input placeholder="Apellido" id="Apellido" @bind="_titular.Apellido" class="form-control">
+<label for="DNI">DNI</label>
+<input placeholder="DNI" id="DNI" @bind="_titular.DNI" class="form-control">
+<label for="Telefono">Telefono</label>
+<input placeholder="Telefono" id="Telefono" @bind="_titular.Telefono" class="form-control">
+<label for="Direccion">Direccion</label>
+<input placeholder="Direccion" id="Direccion" @bind="_titular.Direccion" class="form-control">
+<label for="Mail">Mail</label>
+<input placeholder="Mail" id="Mail" @bind="_titular.Mail" class="form-control">
 <button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
+</form>
 
 @if (_esNuevo)
 {

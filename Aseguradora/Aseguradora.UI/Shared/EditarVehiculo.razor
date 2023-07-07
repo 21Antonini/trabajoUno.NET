@@ -3,11 +3,19 @@
 @inject AgregarVehiculoUseCase AgregarVehiculoUseCase
 @inject ModificarVehiculoUseCase ModificarVehiculoUseCase
 @inject ObtenerVehiculoUseCase ObtenerVehiculoUseCase
+@inject ListarTitularesUseCase ListarTitularesUseCase
 
 <input placeholder="Marca" @bind="_vehiculo.Marca" class="form-control">
 <input placeholder="Modelo" @bind="_vehiculo.Fabricacion" class="form-control">
 <input placeholder="Dominio" @bind="_vehiculo.Dominio" class="form-control">
-<input placeholder="ID del titular" @bind="_vehiculo.TitularId" class="form-control">
+@*<input placeholder="ID del titular" @bind="_vehiculo.TitularId" class="form-control">*@
+<select id="titulares">
+  @foreach (var t in _lista)
+  {
+    <option value=@t.ID>@t.Nombre @t.Apellido</option>
+
+  }
+</select>
 <button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
 
 @if (_esNuevo)
@@ -20,6 +28,12 @@ else
 } 
 
 @code {
+    List<Titular> _lista = new List<Titular>();
+    protected override void OnInitialized()
+    {
+        _lista = ListarTitularesUseCase.Ejecutar();
+    }
+
     Vehiculo _vehiculo = new Vehiculo();
     [Parameter] public int? ID { get; set; }
     bool _esNuevo = true;
